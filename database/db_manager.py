@@ -8,10 +8,15 @@ and validation for local analytical DuckDB storage.
 import sys
 from pathlib import Path
 
-# Auto-detect local virtualenv site-packages if running with system python
-_VENV_SITE = Path(__file__).resolve().parent.parent / ".venv" / "Lib" / "site-packages"
-if _VENV_SITE.exists() and str(_VENV_SITE) not in sys.path:
-    sys.path.insert(0, str(_VENV_SITE))
+# Auto-detect local virtualenv site-packages if running with system python (cross-platform)
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_VENV_CANDIDATES = [
+    _PROJECT_ROOT / ".venv" / "Lib" / "site-packages",
+    *_PROJECT_ROOT.glob(".venv/lib/python3.*/site-packages"),
+]
+for _candidate in _VENV_CANDIDATES:
+    if _candidate.exists() and str(_candidate) not in sys.path:
+        sys.path.insert(0, str(_candidate))
 
 from typing import Any, Dict, List, Optional, Union
 import duckdb
@@ -119,7 +124,7 @@ def load_processed_scinet_data(
 
 def load_organization_usage_data(
     conn: duckdb.DuckDBPyConnection,
-    usage_csv_path: Optional[Union[str, Path]] = None
+    usage_csv_path: Optional[Union[str, Path, Any]] = None
 ) -> int:
     """
     Load organization task usage data and map records to scinet_tasks_master.
@@ -128,19 +133,23 @@ def load_organization_usage_data(
     ----------
     conn : duckdb.DuckDBPyConnection
         Active database connection.
-    usage_csv_path : str or Path, optional
-        Path to organization task usage CSV file. Defaults to synthetic path.
+    usage_csv_path : str, Path, DataFrame, or file-like, optional
+        Path or data source for organization task usage CSV. Defaults to synthetic path.
 
     Returns
     -------
     int
         Number of ingested organization task usage records.
     """
-    csv_file = Path(usage_csv_path) if usage_csv_path is not None else DEFAULT_SYNTHETIC_PATH
-    if not csv_file.exists():
-        raise FileNotFoundError(f"Organization task usage file not found at {csv_file}")
-
-    raw_df = pd.read_csv(csv_file)
+    if isinstance(usage_csv_path, pd.DataFrame):
+        raw_df = usage_csv_path.copy()
+    elif hasattr(usage_csv_path, "read"):
+        raw_df = pd.read_csv(usage_csv_path)
+    else:
+        csv_file = Path(usage_csv_path) if usage_csv_path is not None else DEFAULT_SYNTHETIC_PATH
+        if not csv_file.exists():
+            raise FileNotFoundError(f"Organization task usage file not found at {csv_file}")
+        raw_df = pd.read_csv(csv_file)
     raw_df.columns = [c.strip().lower() for c in raw_df.columns]
 
     # Generate sequential usage IDs if not present

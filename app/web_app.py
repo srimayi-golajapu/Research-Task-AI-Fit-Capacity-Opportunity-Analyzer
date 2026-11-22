@@ -11,14 +11,21 @@ Provides a local, zero-dependency web interface for:
 
 import email
 from email import policy
+from http.cookies import SimpleCookie
 import http.server
+import io
 import json
 import os
+import re
 import socketserver
 import sys
+import threading
+import time
 import urllib.parse
+import uuid
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
+import duckdb
 
 # Ensure project root, src, and database are on Python path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -109,9 +116,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="header-content">
             <div class="brand">
                 <span>⚡ Research Task AI Fit & Capacity Opportunity Analyzer</span>
-                <span class="badge">DuckDB Local-First</span>
+                <span id="session-badge" class="badge">DuckDB Local-First</span>
             </div>
-            <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <a id="header-reset-btn" href="/api/reset" class="btn btn-outline" style="display: none; font-size: 0.8rem; padding: 6px 12px;">Reset to Baseline</a>
                 <a href="/reports/executive_decision_brief.md" target="_blank" class="btn btn-outline">View Decision Brief</a>
             </div>
         </div>
@@ -375,7 +383,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 const orgData = await resOrg.json();
                 document.getElementById('org-name').textContent =
                     escapeHtml(orgData.organization_name) + ' (' + orgData.task_count + ' task allocations)';
-                let orgStats = '<table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>';
+
+                // Update session indicator badge in header
+                const sessionBadge = document.getElementById('session-badge');
+                const resetBtn = document.getElementById('header-reset-btn');
+                if (orgData.is_custom_upload) {
+                    sessionBadge.textContent = 'Custom Session Active';
+                    sessionBadge.style.background = '#fef3c7';
+                    sessionBadge.style.color = '#92400e';
+                    resetBtn.style.display = 'inline-block';
+                } else {
+                    sessionBadge.textContent = 'Nexus Baseline Dataset';
+                    sessionBadge.style.background = '#dbeafe';
+                    sessionBadge.style.color = '#1e40af';
+                    resetBtn.style.display = 'none';
+                }
+
+                let orgStats = '';
+                if (orgData.is_custom_upload) {
+                    orgStats += '<div style="margin-bottom: 16px; padding: 12px 16px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">' +
+                        '<div><strong>Isolated Visitor Session:</strong> Viewing custom uploaded organizational data. Changes and downloads are private to your browser session.</div>' +
+                        '<a href="/api/reset" class="btn btn-outline" style="font-size: 0.8rem; background: #fff; padding: 4px 10px;">Reset to Baseline</a>' +
+                        '</div>';
+                }
+                orgStats += '<table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>';
                 orgStats += `<tr><td>Total task allocations</td><td>${orgData.task_count}</td></tr>`;
                 orgStats += `<tr><td>Matched to SciNet catalog</td><td>${orgData.matched_count} (${orgData.match_rate_pct}%)</td></tr>`;
                 orgStats += `<tr><td>Total annual task hours</td><td>${Number(orgData.total_annual_hours).toLocaleString()} hrs</td></tr>`;
@@ -392,7 +423,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             const params = new URLSearchParams(window.location.search);
             if (params.get('status') === 'uploaded') {
                 document.getElementById('status-banner').innerHTML =
-                    '<div class="alert alert-success">&#10003; Organization CSV uploaded and analysis re-run successfully.</div>';
+                    '<div class="alert alert-success">&#10003; Organization CSV uploaded and analyzed in isolated session.</div>';
+                window.history.replaceState({}, '', '/');
+            } else if (params.get('status') === 'reset') {
+                document.getElementById('status-banner').innerHTML =
+                    '<div class="alert alert-success">&#10003; Session reset to default baseline demonstration dataset (Nexus Institute).</div>';
                 window.history.replaceState({}, '', '/');
             } else if (params.get('status') === 'error') {
                 document.getElementById('status-banner').innerHTML =
@@ -528,15 +563,176 @@ def parse_multipart_payload(content_type_header: str, body_bytes: bytes) -> Dict
     return fields
 
 
+MAX_UPLOAD_BYTES = 2 * 1024 * 1024  # 2 MB upload ceiling
+SESSION_TTL_SECONDS = 1800           # 30-minute visitor session timeout
+MAX_SESSIONS = 50                    # Cap concurrent active in-memory sessions
+BASELINE_DB_PATH = PROJECT_ROOT / "database" / "research_task_analyzer.duckdb"
+ALLOWED_REPORT_FILES = {
+    "executive_decision_brief.md",
+    "task_opportunity_scoring.csv",
+    "scenario_simulation_matrix.csv",
+    "domain_opportunity_summary.csv",
+}
+
+
+def sanitize_error_message(msg: str) -> str:
+    """Strip server filesystem paths and truncate error messages for safe display."""
+    # Strip Windows drive paths (e.g. C:\... or c:/...)
+    cleaned = re.sub(r"[A-Za-z]:[\\/][^ \t\n\r\"']+", "[path]", str(msg))
+    # Strip Linux root paths (e.g. /opt/render/... or /home/...)
+    cleaned = re.sub(r"/(?:opt|home|usr|var|tmp|etc|app)/[^ \t\n\r\"']+", "[path]", cleaned)
+    return cleaned[:200]
+
+
+class SessionState:
+    """Encapsulates an isolated in-memory DuckDB analytical session for a visitor."""
+
+    def __init__(self, session_id: str, baseline_db_path: Path):
+        self.session_id = session_id
+        self.created_at = time.time()
+        self.last_accessed = time.time()
+        self.organization_name = "Uploaded Organization"
+        self.baseline_db_path = baseline_db_path
+        self.lock = threading.Lock()
+
+        # Connect to in-memory DuckDB and initialize schema from baseline
+        self.conn = duckdb.connect(":memory:")
+        self.attach_baseline()
+        try:
+            self.conn.execute("CREATE TABLE organization_task_usage AS SELECT * FROM baseline.organization_task_usage WHERE 1=0;")
+            self.conn.execute("CREATE TABLE scenario_results AS SELECT * FROM baseline.scenario_results WHERE 1=0;")
+        finally:
+            self.detach_baseline()
+
+    def attach_baseline(self) -> None:
+        """Attach baseline database read-only for catalog lookups."""
+        norm_path = str(self.baseline_db_path).replace("\\", "/")
+        try:
+            self.conn.execute(f"ATTACH '{norm_path}' AS baseline (READ_ONLY);")
+            self.conn.execute("PRAGMA search_path='main,baseline';")
+        except Exception:
+            pass
+
+    def detach_baseline(self) -> None:
+        """Detach baseline database to immediately release file handles."""
+        try:
+            self.conn.execute("PRAGMA search_path='main';")
+            self.conn.execute("DETACH baseline;")
+        except Exception:
+            pass
+
+    def touch(self) -> None:
+        self.last_accessed = time.time()
+
+    def close(self) -> None:
+        try:
+            self.detach_baseline()
+            self.conn.close()
+        except Exception:
+            pass
+
+
+class SessionManager:
+    """Thread-safe registry managing isolated in-memory visitor analytical sessions."""
+
+    _sessions: Dict[str, SessionState] = {}
+    _lock = threading.Lock()
+
+    @classmethod
+    def get(cls, session_id: Optional[str]) -> Optional[SessionState]:
+        if not session_id:
+            return None
+        with cls._lock:
+            cls._cleanup_expired()
+            session = cls._sessions.get(session_id)
+            if session:
+                session.touch()
+                return session
+            return None
+
+    @classmethod
+    def create_or_get(cls, session_id: Optional[str], baseline_db_path: Path) -> SessionState:
+        with cls._lock:
+            cls._cleanup_expired()
+            if session_id and session_id in cls._sessions:
+                session = cls._sessions[session_id]
+                session.touch()
+                return session
+
+            # Evict oldest LRU session if capacity limit reached
+            if len(cls._sessions) >= MAX_SESSIONS:
+                oldest_id = min(cls._sessions.keys(), key=lambda k: cls._sessions[k].last_accessed)
+                cls._sessions[oldest_id].close()
+                del cls._sessions[oldest_id]
+
+            new_id = str(uuid.uuid4())
+            new_session = SessionState(new_id, baseline_db_path)
+            cls._sessions[new_id] = new_session
+            return new_session
+
+    @classmethod
+    def delete(cls, session_id: Optional[str]) -> None:
+        if not session_id:
+            return
+        with cls._lock:
+            if session_id in cls._sessions:
+                cls._sessions[session_id].close()
+                del cls._sessions[session_id]
+
+    @classmethod
+    def count(cls) -> int:
+        with cls._lock:
+            return len(cls._sessions)
+
+    @classmethod
+    def _cleanup_expired(cls) -> None:
+        now = time.time()
+        expired = [
+            sid for sid, sess in cls._sessions.items()
+            if (now - sess.last_accessed) > SESSION_TTL_SECONDS
+        ]
+        for sid in expired:
+            try:
+                cls._sessions[sid].close()
+            except Exception:
+                pass
+            del cls._sessions[sid]
+
+
 class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
-    """Custom HTTP request handler for the interactive dashboard."""
+    """Custom HTTP request handler for the interactive dashboard with multi-visitor isolation."""
+
+    def get_session_id(self) -> Optional[str]:
+        """Extract and validate UUID session_id from Cookie header."""
+        cookie_header = self.headers.get("Cookie")
+        if not cookie_header:
+            return None
+        cookie = SimpleCookie()
+        try:
+            cookie.load(cookie_header)
+            if "session_id" in cookie:
+                sid = cookie["session_id"].value.strip()
+                if sid and re.match(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", sid, re.I):
+                    return sid
+        except Exception:
+            return None
+        return None
+
+    def get_session(self) -> Optional[SessionState]:
+        """Return the active SessionState for the current visitor, if one exists."""
+        sid = self.get_session_id()
+        return SessionManager.get(sid)
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
 
         if path == "/health" or path == "/api/health":
-            self.send_json({"status": "healthy", "service": "research-task-ai-analyzer"})
+            self.send_json({
+                "status": "healthy",
+                "service": "research-task-ai-analyzer",
+                "active_sessions": SessionManager.count()
+            })
             return
 
         elif path == "/" or path == "/index.html":
@@ -546,96 +742,146 @@ class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(HTML_TEMPLATE.encode("utf-8"))
             return
 
+        elif path == "/api/reset":
+            sid = self.get_session_id()
+            if sid:
+                SessionManager.delete(sid)
+            self.send_response(303)
+            self.send_header("Location", "/?status=reset")
+            self.send_header(
+                "Set-Cookie",
+                "session_id=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; HttpOnly; SameSite=Lax"
+            )
+            self.end_headers()
+            return
+
         elif path == "/api/kpis":
+            session = self.get_session()
             conn = get_connection(read_only=True)
             try:
-                total_tasks = conn.execute(
-                    "SELECT COUNT(*) FROM analytical_scoring_results;"
-                ).fetchone()[0]
-                high_fit = conn.execute(
-                    "SELECT COUNT(*) FROM analytical_scoring_results WHERE feasibility_score >= 60.0;"
-                ).fetchone()[0]
-                constrained = conn.execute(
-                    "SELECT COUNT(*) FROM analytical_scoring_results WHERE ai_fit_category = 'Constrained';"
-                ).fetchone()[0]
-                mod_row = conn.execute("""
-                    SELECT
-                        ROUND(SUM(potential_hours_released), 1) AS hrs,
-                        ROUND(SUM(fte_capacity_equivalent), 2) AS fte
-                    FROM scenario_results
-                    WHERE scenario_id = 'SCEN_MODERATE';
-                """).fetchone()
-                mod_hrs = mod_row[0] if mod_row and mod_row[0] is not None else 0.0
-                mod_fte = mod_row[1] if mod_row and mod_row[1] is not None else 0.0
-                self.send_json({
-                    "total_tasks": total_tasks,
-                    "high_fit_tasks": high_fit,
-                    "constrained_tasks": constrained,
-                    "moderate_hours_released": mod_hrs,
-                    "moderate_fte": mod_fte,
-                })
+                total_tasks = conn.execute("SELECT COUNT(*) FROM analytical_scoring_results;").fetchone()[0]
+                high_fit = conn.execute("SELECT COUNT(*) FROM analytical_scoring_results WHERE feasibility_score >= 60.0;").fetchone()[0]
+                constrained = conn.execute("SELECT COUNT(*) FROM analytical_scoring_results WHERE ai_fit_category = 'Constrained';").fetchone()[0]
             finally:
                 conn.close()
+
+            if session:
+                with session.lock:
+                    mod_row = session.conn.execute("""
+                        SELECT
+                            ROUND(SUM(potential_hours_released), 1) AS hrs,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS fte
+                        FROM scenario_results
+                        WHERE scenario_id = 'SCEN_MODERATE';
+                    """).fetchone()
+            else:
+                conn = get_connection(read_only=True)
+                try:
+                    mod_row = conn.execute("""
+                        SELECT
+                            ROUND(SUM(potential_hours_released), 1) AS hrs,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS fte
+                        FROM scenario_results
+                        WHERE scenario_id = 'SCEN_MODERATE';
+                    """).fetchone()
+                finally:
+                    conn.close()
+
+            mod_hrs = mod_row[0] if mod_row and mod_row[0] is not None else 0.0
+            mod_fte = mod_row[1] if mod_row and mod_row[1] is not None else 0.0
+            self.send_json({
+                "total_tasks": total_tasks,
+                "high_fit_tasks": high_fit,
+                "constrained_tasks": constrained,
+                "moderate_hours_released": mod_hrs,
+                "moderate_fte": mod_fte,
+            })
             return
 
         elif path == "/api/domains":
             conn = get_connection(read_only=True)
             try:
                 df = query_df("SELECT * FROM vw_domain_opportunity_summary;", conn=conn)
-                self.send_json(df.to_dict("records"))
             finally:
                 conn.close()
+            self.send_json(df.to_dict("records"))
             return
 
         elif path == "/api/scenarios":
-            conn = get_connection(read_only=True)
-            try:
-                from simulation.scenario_engine import DEFAULT_SCENARIOS
-                scen_df = query_df("""
-                    SELECT
-                        scenario_id,
-                        scenario_name,
-                        ROUND(SUM(baseline_annual_hours), 1) AS total_baseline_hours,
-                        ROUND(SUM(potential_hours_released), 1) AS total_hours_released,
-                        ROUND(SUM(fte_capacity_equivalent), 2) AS total_fte_equivalent,
-                        ROUND((SUM(potential_hours_released) / SUM(baseline_annual_hours)) * 100.0, 2) AS overall_hours_released_pct
-                    FROM scenario_results
-                    GROUP BY scenario_id, scenario_name
-                    ORDER BY total_hours_released ASC;
-                """, conn=conn)
+            from simulation.scenario_engine import DEFAULT_SCENARIOS
+            session = self.get_session()
+            if session:
+                with session.lock:
+                    scen_df = query_df("""
+                        SELECT
+                            scenario_id,
+                            scenario_name,
+                            ROUND(SUM(baseline_annual_hours), 1) AS total_baseline_hours,
+                            ROUND(SUM(potential_hours_released), 1) AS total_hours_released,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS total_fte_equivalent,
+                            ROUND((SUM(potential_hours_released) / SUM(baseline_annual_hours)) * 100.0, 2) AS overall_hours_released_pct
+                        FROM scenario_results
+                        GROUP BY scenario_id, scenario_name
+                        ORDER BY total_hours_released ASC;
+                    """, conn=session.conn)
+                    dept_df = query_df("""
+                        SELECT
+                            department,
+                            ROUND(SUM(baseline_annual_hours), 1) AS baseline_hours,
+                            ROUND(SUM(potential_hours_released), 1) AS hours_released,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS fte_equivalent
+                        FROM scenario_results
+                        WHERE scenario_id = 'SCEN_MODERATE'
+                        GROUP BY department
+                        ORDER BY hours_released DESC;
+                    """, conn=session.conn)
+            else:
+                conn = get_connection(read_only=True)
+                try:
+                    scen_df = query_df("""
+                        SELECT
+                            scenario_id,
+                            scenario_name,
+                            ROUND(SUM(baseline_annual_hours), 1) AS total_baseline_hours,
+                            ROUND(SUM(potential_hours_released), 1) AS total_hours_released,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS total_fte_equivalent,
+                            ROUND((SUM(potential_hours_released) / SUM(baseline_annual_hours)) * 100.0, 2) AS overall_hours_released_pct
+                        FROM scenario_results
+                        GROUP BY scenario_id, scenario_name
+                        ORDER BY total_hours_released ASC;
+                    """, conn=conn)
+                    dept_df = query_df("""
+                        SELECT
+                            department,
+                            ROUND(SUM(baseline_annual_hours), 1) AS baseline_hours,
+                            ROUND(SUM(potential_hours_released), 1) AS hours_released,
+                            ROUND(SUM(fte_capacity_equivalent), 2) AS fte_equivalent
+                        FROM scenario_results
+                        WHERE scenario_id = 'SCEN_MODERATE'
+                        GROUP BY department
+                        ORDER BY hours_released DESC;
+                    """, conn=conn)
+                finally:
+                    conn.close()
 
-                param_map = {p.scenario_id: p for p in DEFAULT_SCENARIOS.values()}
-                records = scen_df.to_dict("records")
-                for rec in records:
-                    sid = rec.get("scenario_id", "")
-                    if sid in param_map:
-                        p = param_map[sid]
-                        rec["adoption_rate_pct"] = round(p.adoption_rate * 100)
-                        rec["gross_efficiency_pct"] = round(p.gross_efficiency_gain * 100)
-                        rec["verification_overhead_pct"] = round(p.verification_overhead * 100)
-                    else:
-                        rec["adoption_rate_pct"] = "-"
-                        rec["gross_efficiency_pct"] = "-"
-                        rec["verification_overhead_pct"] = "-"
+            param_map = {p.scenario_id: p for p in DEFAULT_SCENARIOS.values()}
+            records = scen_df.to_dict("records")
+            for rec in records:
+                sid = rec.get("scenario_id", "")
+                if sid in param_map:
+                    p = param_map[sid]
+                    rec["adoption_rate_pct"] = round(p.adoption_rate * 100)
+                    rec["gross_efficiency_pct"] = round(p.gross_efficiency_gain * 100)
+                    rec["verification_overhead_pct"] = round(p.verification_overhead * 100)
+                else:
+                    rec["adoption_rate_pct"] = "-"
+                    rec["gross_efficiency_pct"] = "-"
+                    rec["verification_overhead_pct"] = "-"
 
-                dept_df = query_df("""
-                    SELECT
-                        department,
-                        ROUND(SUM(baseline_annual_hours), 1) AS baseline_hours,
-                        ROUND(SUM(potential_hours_released), 1) AS hours_released,
-                        ROUND(SUM(fte_capacity_equivalent), 2) AS fte_equivalent
-                    FROM scenario_results
-                    WHERE scenario_id = 'SCEN_MODERATE'
-                    GROUP BY department
-                    ORDER BY hours_released DESC;
-                """, conn=conn)
-
-                self.send_json({
-                    "scenarios": records,
-                    "departments": dept_df.to_dict("records")
-                })
-            finally:
-                conn.close()
+            self.send_json({
+                "scenarios": records,
+                "departments": dept_df.to_dict("records")
+            })
             return
 
         elif path == "/api/tasks":
@@ -651,57 +897,115 @@ class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
                     ORDER BY capacity_opportunity_score DESC
                     LIMIT 200;
                 """, conn=conn)
-                self.send_json(df.to_dict("records"))
             finally:
                 conn.close()
+            self.send_json(df.to_dict("records"))
             return
 
         elif path == "/api/org_summary":
-            conn = get_connection(read_only=True)
-            try:
-                row = conn.execute("""
-                    SELECT
-                        COALESCE(MAX(organization_name), 'Unknown Organization') AS organization_name,
-                        COUNT(*) AS task_count,
-                        COUNT(CASE WHEN matched_task_id IS NOT NULL THEN 1 END) AS matched_count,
-                        ROUND(SUM(annual_task_hours), 1) AS total_annual_hours
-                    FROM organization_task_usage;
-                """).fetchone()
-                total = row[1] if row else 0
-                matched = row[2] if row else 0
-                match_pct = round((matched / total * 100), 1) if total > 0 else 0.0
-                self.send_json({
-                    "organization_name": row[0] if row else "Unknown",
-                    "task_count": total,
-                    "matched_count": matched,
-                    "match_rate_pct": match_pct,
-                    "total_annual_hours": row[3] if row and row[3] is not None else 0.0,
-                })
-            finally:
-                conn.close()
+            session = self.get_session()
+            if session:
+                with session.lock:
+                    row = session.conn.execute("""
+                        SELECT
+                            COALESCE(MAX(organization_name), 'Uploaded Organization') AS organization_name,
+                            COUNT(*) AS task_count,
+                            COUNT(CASE WHEN matched_task_id IS NOT NULL THEN 1 END) AS matched_count,
+                            ROUND(SUM(annual_task_hours), 1) AS total_annual_hours
+                        FROM organization_task_usage;
+                    """).fetchone()
+                is_custom = True
+            else:
+                conn = get_connection(read_only=True)
+                try:
+                    row = conn.execute("""
+                        SELECT
+                            COALESCE(MAX(organization_name), 'Unknown Organization') AS organization_name,
+                            COUNT(*) AS task_count,
+                            COUNT(CASE WHEN matched_task_id IS NOT NULL THEN 1 END) AS matched_count,
+                            ROUND(SUM(annual_task_hours), 1) AS total_annual_hours
+                        FROM organization_task_usage;
+                    """).fetchone()
+                finally:
+                    conn.close()
+                is_custom = False
+
+            total = row[1] if row else 0
+            matched = row[2] if row else 0
+            match_pct = round((matched / total * 100), 1) if total > 0 else 0.0
+            self.send_json({
+                "organization_name": row[0] if row else "Unknown",
+                "task_count": total,
+                "matched_count": matched,
+                "match_rate_pct": match_pct,
+                "total_annual_hours": row[3] if row and row[3] is not None else 0.0,
+                "is_custom_upload": is_custom,
+            })
             return
 
         elif path.startswith("/reports/"):
-            # Serve report files using absolute path; sanitize to prevent path traversal
             file_name = path[len("/reports/"):]
             if not file_name or ".." in file_name or "/" in file_name or "\\" in file_name:
                 self.send_error(400, "Invalid report file name")
                 return
-            target_file = REPORTS_DIR / file_name
-            if target_file.exists() and target_file.is_file():
-                self.send_response(200)
-                if file_name.endswith(".csv"):
-                    self.send_header("Content-Type", "text/csv; charset=utf-8")
-                else:
-                    self.send_header("Content-Type", "text/markdown; charset=utf-8")
-                self.send_header("Content-Disposition", f'attachment; filename="{file_name}"')
-                self.send_header("Content-Length", str(target_file.stat().st_size))
-                self.end_headers()
-                self.wfile.write(target_file.read_bytes())
-                return
-            else:
+            if file_name not in ALLOWED_REPORT_FILES:
                 self.send_error(404, "Report file not found")
                 return
+
+            session = self.get_session()
+            if session:
+                with session.lock:
+                    session.attach_baseline()
+                    try:
+                        if file_name == "executive_decision_brief.md":
+                            from reporting.report_generator import generate_executive_decision_brief
+                            brief_content = generate_executive_decision_brief(
+                                conn=session.conn,
+                                organization_name=session.organization_name
+                            )
+                            data_bytes = brief_content.encode("utf-8")
+                            content_type = "text/markdown; charset=utf-8"
+                        elif file_name == "task_opportunity_scoring.csv":
+                            df = query_df("SELECT * FROM analytical_scoring_results ORDER BY capacity_opportunity_score DESC;", conn=session.conn)
+                            data_bytes = df.to_csv(index=False).encode("utf-8")
+                            content_type = "text/csv; charset=utf-8"
+                        elif file_name == "scenario_simulation_matrix.csv":
+                            df = query_df("SELECT * FROM scenario_results ORDER BY scenario_id, potential_hours_released DESC;", conn=session.conn)
+                            data_bytes = df.to_csv(index=False).encode("utf-8")
+                            content_type = "text/csv; charset=utf-8"
+                        elif file_name == "domain_opportunity_summary.csv":
+                            df = query_df("SELECT * FROM vw_domain_opportunity_summary;", conn=session.conn)
+                            data_bytes = df.to_csv(index=False).encode("utf-8")
+                            content_type = "text/csv; charset=utf-8"
+                        else:
+                            self.send_error(404, "Report not found")
+                            return
+                    finally:
+                        session.detach_baseline()
+
+                self.send_response(200)
+                self.send_header("Content-Type", content_type)
+                self.send_header("Content-Disposition", f'attachment; filename="{file_name}"')
+                self.send_header("Content-Length", str(len(data_bytes)))
+                self.end_headers()
+                self.wfile.write(data_bytes)
+                return
+            else:
+                target_file = REPORTS_DIR / file_name
+                if target_file.exists() and target_file.is_file():
+                    self.send_response(200)
+                    if file_name.endswith(".csv"):
+                        self.send_header("Content-Type", "text/csv; charset=utf-8")
+                    else:
+                        self.send_header("Content-Type", "text/markdown; charset=utf-8")
+                    self.send_header("Content-Disposition", f'attachment; filename="{file_name}"')
+                    self.send_header("Content-Length", str(target_file.stat().st_size))
+                    self.end_headers()
+                    self.wfile.write(target_file.read_bytes())
+                    return
+                else:
+                    self.send_error(404, "Report file not found")
+                    return
 
         self.send_error(404, "Endpoint not found")
         return
@@ -722,6 +1026,10 @@ class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(400, "Missing or empty request body")
                 return
 
+            if content_length > MAX_UPLOAD_BYTES:
+                self.send_error(413, f"Uploaded file exceeds limit of {MAX_UPLOAD_BYTES // (1024 * 1024)} MB")
+                return
+
             body_bytes = self.rfile.read(content_length)
             fields = parse_multipart_payload(content_type, body_bytes)
 
@@ -737,7 +1045,7 @@ class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(400, "Uploaded CSV file is empty")
                 return
 
-            # Pre-validate required columns BEFORE touching the database
+            # Pre-validate required columns BEFORE initializing session database
             try:
                 import io
                 import pandas as pd
@@ -751,58 +1059,52 @@ class AnalyzerRequestHandler(http.server.SimpleHTTPRequestHandler):
                         f"Found: {list(preview_df.columns)}"
                     )
             except ValueError as ve:
-                self._redirect_with_error(str(ve))
+                self._redirect_with_error(sanitize_error_message(str(ve)))
                 return
             except Exception as pe:
-                self._redirect_with_error(f"Could not parse CSV: {pe}")
+                self._redirect_with_error(f"Could not parse CSV: {sanitize_error_message(str(pe))}")
                 return
 
-            upload_path = PROJECT_ROOT / "data" / "synthetic" / "uploaded_organization_usage.csv"
-            upload_path.parent.mkdir(parents=True, exist_ok=True)
-            upload_path.write_bytes(csv_bytes)
+            # Create or reuse isolated in-memory visitor session
+            session_id = self.get_session_id()
+            session = SessionManager.create_or_get(session_id, BASELINE_DB_PATH)
 
-            conn = get_connection()
-            try:
-                load_organization_usage_data(conn, usage_csv_path=upload_path)
-                org_df = query_df("""
-                    SELECT
-                        u.*,
-                        COALESCE(s.feasibility_score, 50.0) AS feasibility_score,
-                        COALESCE(s.capacity_opportunity_score, 40.0) AS capacity_opportunity_score,
-                        s.ai_fit_category,
-                        s.priority_tier
-                    FROM organization_task_usage u
-                    LEFT JOIN analytical_scoring_results s ON u.matched_task_id = s.task_id;
-                """, conn=conn)
-                sim_results = run_scenario_simulation(org_df)
-                save_scenario_results_to_duckdb(sim_results, conn=conn)
-                export_all_reports(conn=conn)
-            except Exception as e:
-                # Best-effort rollback: restore default synthetic org data
+            with session.lock:
+                session.attach_baseline()
                 try:
-                    default_path = PROJECT_ROOT / "data" / "synthetic" / "organization_task_usage.csv"
-                    if default_path.exists():
-                        load_organization_usage_data(conn, usage_csv_path=default_path)
-                        fallback_df = query_df("""
-                            SELECT u.*,
-                                COALESCE(s.feasibility_score, 50.0) AS feasibility_score,
-                                COALESCE(s.capacity_opportunity_score, 40.0) AS capacity_opportunity_score,
-                                s.ai_fit_category, s.priority_tier
-                            FROM organization_task_usage u
-                            LEFT JOIN analytical_scoring_results s ON u.matched_task_id = s.task_id;
-                        """, conn=conn)
-                        fallback_sim = run_scenario_simulation(fallback_df)
-                        save_scenario_results_to_duckdb(fallback_sim, conn=conn)
-                        export_all_reports(conn=conn)
-                except Exception:
-                    pass
-                self._redirect_with_error(str(e))
-                return
-            finally:
-                conn.close()
+                    load_organization_usage_data(session.conn, usage_csv_path=io.BytesIO(csv_bytes))
+                    org_df = query_df("""
+                        SELECT
+                            u.*,
+                            COALESCE(s.feasibility_score, 50.0) AS feasibility_score,
+                            COALESCE(s.capacity_opportunity_score, 40.0) AS capacity_opportunity_score,
+                            s.ai_fit_category,
+                            s.priority_tier
+                        FROM organization_task_usage u
+                        LEFT JOIN analytical_scoring_results s ON u.matched_task_id = s.task_id;
+                    """, conn=session.conn)
+                    sim_results = run_scenario_simulation(org_df)
+                    save_scenario_results_to_duckdb(sim_results, conn=session.conn)
+
+                    # Extract organization name for report personalization
+                    org_name_row = session.conn.execute(
+                        "SELECT COALESCE(MAX(organization_name), 'Uploaded Organization') FROM organization_task_usage;"
+                    ).fetchone()
+                    if org_name_row and org_name_row[0]:
+                        session.organization_name = org_name_row[0]
+
+                except Exception as e:
+                    self._redirect_with_error(sanitize_error_message(str(e)))
+                    return
+                finally:
+                    session.detach_baseline()
 
             self.send_response(303)
             self.send_header("Location", "/?status=uploaded")
+            self.send_header(
+                "Set-Cookie",
+                f"session_id={session.session_id}; Path=/; Max-Age={SESSION_TTL_SECONDS}; HttpOnly; SameSite=Lax"
+            )
             self.end_headers()
             return
 

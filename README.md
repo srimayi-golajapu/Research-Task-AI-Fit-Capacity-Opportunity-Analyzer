@@ -3,11 +3,11 @@
 [![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/)
 [![DuckDB](https://img.shields.io/badge/duckdb-2.0.1-yellow.svg)](https://duckdb.org/)
 [![uv](https://img.shields.io/badge/package%20manager-uv-purple.svg)](https://github.com/astral-sh/uv)
-[![Tests](https://img.shields.io/badge/tests-44%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-48%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Data License: CC BY 4.0](https://img.shields.io/badge/Data%20License-CC%20BY%204.0-lightgrey.svg)](LICENSES.md)
 
-An end-to-end analytical decision-support application and portfolio project that evaluates organizational research tasks for generative AI assistance, enforces physical-work and regulatory constraint gates, models capacity-release opportunities across policy scenarios, and generates executive decision briefs.
+**An end-to-end analytical decision-support application** that evaluates organizational research tasks for generative AI assistance -- enforcing physical-work constraint gates, modelling capacity-release opportunities across policy scenarios, and generating executive decision briefs from a 27,823-task peer-reviewed taxonomy.
 
 ---
 
@@ -17,7 +17,7 @@ An end-to-end analytical decision-support application and portfolio project that
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 1. [Project Purpose & Problem Statement](#1-project-purpose--problem-statement)
 2. [Architecture Overview](#2-architecture-overview)
 3. [Technology Stack](#3-technology-stack)
@@ -32,9 +32,11 @@ An end-to-end analytical decision-support application and portfolio project that
 10. [Scenario Modelling & Capacity Release Simulation](#10-scenario-modelling--capacity-release-simulation)
 11. [Reporting & Decision Brief Exports](#11-reporting--decision-brief-exports)
 12. [Testing & Quality Verification](#12-testing--quality-verification)
-13. [Deployment Guide](#13-deployment-guide)
-14. [Known Limitations & Governance Caveats](#14-known-limitations--governance-caveats)
-15. [License & Third-Party Attribution](#15-license--third-party-attribution)
+13. [Skills & Technologies Demonstrated](#13-skills--technologies-demonstrated)
+14. [Future Implementations](#14-future-implementations)
+15. [Deployment Guide](#15-deployment-guide)
+16. [Known Limitations & Governance Caveats](#16-known-limitations--governance-caveats)
+17. [License & Third-Party Attribution](#17-license--third-party-attribution)
 
 ---
 
@@ -56,34 +58,38 @@ This application provides an **evidence-based decision-support framework** that:
 ## 2. Architecture Overview
 
 ```text
-┌────────────────────────────────────────────────────────────────────────┐
-│                        DATA INGESTION PIPELINE                         │
-│  data/raw/scinet/ (6 CSVs)  +  data/synthetic/ (Org task allocations)  │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│               VALIDATION & NORMALIZATION (src/ingestion/)              │
-│   • Schema & type enforcement    • Deterministic SHA-256 Task IDs      │
-│   • 1,020 universal tasks saved  • Zero silent record loss             │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                    EMBEDDED ANALYTICAL STORAGE (DuckDB)                │
-│  database/research_task_analyzer.duckdb (27,823 tasks, org usage, views│
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                    ANALYTICAL & SCENARIO ENGINES                       │
-│   • src/analytics/scoring_engine.py  (6-dimension multi-factor score)   │
-│   • src/simulation/scenario_engine.py (Conservative/Moderate/Optimistic)│
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                        PRESENTATION & EXPORT TIER                      │
-│   • app/web_app.py (Multi-threaded HTTP Server with /health check)     │
-│   • app/cli.py (Command-line pipeline runner & summary inspection)     │
-│   • reports/ (Executive Decision Briefs & CSV Exports)                 │
-└────────────────────────────────────────────────────────────────────────┘
++------------------------------------------------------------------------+
+|                        DATA INGESTION PIPELINE                         |
+|  data/raw/scinet/ (6 CSVs)  +  data/synthetic/ (Org task allocations)  |
++-----------------------------------+------------------------------------+
+                                    |
+                                    v
++------------------------------------------------------------------------+
+|               VALIDATION & NORMALIZATION (src/ingestion/)              |
+|   * Schema & type enforcement    * Deterministic SHA-256 Task IDs      |
+|   * 1,020 universal tasks saved  * Zero silent record loss             |
++-----------------------------------+------------------------------------+
+                                    |
+                                    v
++------------------------------------------------------------------------+
+|                    EMBEDDED ANALYTICAL STORAGE (DuckDB)                |
+|  database/research_task_analyzer.duckdb (27,823 tasks, org usage, views|
++-----------------------------------+------------------------------------+
+                                    |
+                                    v
++------------------------------------------------------------------------+
+|                    ANALYTICAL & SCENARIO ENGINES                       |
+|   * src/analytics/scoring_engine.py  (6-dimension multi-factor score)  |
+|   * src/simulation/scenario_engine.py (Conservative/Moderate/Optimistic|
++-----------------------------------+------------------------------------+
+                                    |
+                                    v
++------------------------------------------------------------------------+
+|                        PRESENTATION & EXPORT TIER                      |
+|   * app/web_app.py (Multi-threaded HTTP Server with /health check)     |
+|   * app/cli.py (Command-line pipeline runner & summary inspection)     |
+|   * reports/ (Executive Decision Briefs & CSV Exports)                 |
++------------------------------------------------------------------------+
 ```
 
 ---
@@ -95,7 +101,7 @@ This application provides an **evidence-based decision-support framework** that:
 - **Database:** DuckDB 2.0.1 (embedded in-process analytical SQL OLAP engine)
 - **Data Engineering:** Pandas 3.1.1, NumPy 2.5.4
 - **Testing:** pytest 9.2.0
-- **Web Application:** Python standard library `http.server` & `socketserver.ThreadingMixIn` (Zero external heavy web framework dependencies)
+- **Web Application:** Python standard library `http.server` & `socketserver.ThreadingMixIn` (zero external web framework dependencies)
 - **UI Styling:** Native CSS3 responsive grid layout, accessible color palette
 
 ---
@@ -106,7 +112,7 @@ The application integrates three distinct data tiers:
 
 | Tier | Data Source | Records | Role in the System |
 |---|---|---:|---|
-| **Primary Taxonomy** | **SciNet — The Anatomy of Science** (`data/raw/scinet/`) | 27,823 master rows | Peer-reviewed academic task taxonomy spanning 6 scientific domains, with dimensional scores for cognitive complexity, physical deployment, and regulatory constraints. |
+| **Primary Taxonomy** | **SciNet -- The Anatomy of Science** (`data/raw/scinet/`) | 27,823 master rows | Peer-reviewed academic task taxonomy spanning 6 scientific domains, with dimensional scores for cognitive complexity, physical deployment, and regulatory constraints. |
 | **Contextual Evidence** | **Anthropic Economic Research Findings** | Calibration parameters | Aggregate macroeconomic findings on LLM task exposure, citation velocity, and verification overhead used as contextual calibration anchors. |
 | **Organizational Input** | **Nexus Institute for Advanced Research** (`data/synthetic/`) | 150 allocations (151,275.8 hrs) | Intentional demonstration dataset representing faculty, postdoc, and researcher task hours across 5 departments. Replaceable via custom CSV upload. |
 
@@ -152,14 +158,14 @@ uv run python app/web_app.py --port 8501
 ```
 
 Open your browser to:
-👉 **`http://localhost:8501`**
+**`http://localhost:8501`**
 
-#### Dashboard Features:
-- **Executive Overview:** Live KPI cards for total evaluated tasks, high-fit opportunities, released hours, and FTE equivalents.
-- **Scenario Simulation Matrix:** Side-by-side comparison of Conservative, Moderate, and Optimistic outcomes across all departments.
-- **Task Opportunity Explorer:** Real-time search, domain filtering, and priority tier categorization for all 27,823 tasks. Click **"Explain"** on any row to open the complete multi-factor justification modal.
-- **Organization CSV Uploader:** Upload your own department usage CSV and re-run scenarios instantly.
-- **Reports & Downloads:** One-click downloads for Markdown decision briefs and analytical CSVs.
+#### Dashboard Tabs:
+- **Executive Overview:** Live KPI cards for total evaluated tasks, high-fit opportunities, released hours, and FTE equivalents. Includes the Macro Domain Opportunity Landscape table.
+- **Scenario Simulation:** Side-by-side comparison of Conservative, Moderate, and Optimistic outcomes with department-level breakdown.
+- **Task Opportunity Explorer:** Real-time keyword search, domain filtering, and priority tier filtering. The API loads the top 200 tasks by opportunity score; up to 100 are displayed per view. Click **"Explain"** on any row to open the full multi-factor scoring justification.
+- **Organization Data:** Upload your own department usage CSV and re-run scenarios in an isolated session. Shows current dataset summary statistics.
+- **Exports & Reports:** One-click downloads for the Markdown decision brief and all three analytical CSVs.
 
 ---
 
@@ -188,14 +194,27 @@ uv run python app/cli.py serve --port 8501
 
 ## 7. Screenshots
 
-<!-- Screenshots will be added post-deployment. Placeholders below illustrate dashboard structure. -->
+The following screenshots were captured from the running application using the Nexus Institute for Advanced Research demonstration dataset.
 
-| Section | Preview |
-|---|---|
-| **Executive Overview & KPI Cards** | *[ Screenshot Placeholder: Executive KPI cards, macro domain landscape, and navigation tabs ]* |
-| **Capacity Release Scenario Matrix** | *[ Screenshot Placeholder: Side-by-side Conservative, Moderate, and Optimistic policy simulation tables ]* |
-| **Task Opportunity Explorer & Modal** | *[ Screenshot Placeholder: Searchable task catalog with priority badges and Explain modal ]* |
-| **Organization CSV Data & Upload** | *[ Screenshot Placeholder: Demonstration staffing overview and CSV file upload interface ]* |
+### Executive Overview & KPI Cards
+![Executive Overview](docs/images/executive-overview.png)
+*Five live KPI cards (27,823 evaluated tasks, 2,145 high-fit opportunities, 11,360.7 hrs Moderate capacity release, 6.31 FTE equivalent, 1,038 constrained tasks) and the Macro Domain Opportunity Landscape table showing average scores across six scientific domains.*
+
+### Scenario Simulation
+![Scenario Simulation](docs/images/scenario-simulation.png)
+*Capacity Release Scenario Comparison Matrix: Conservative (3,313.4 hrs, 1.84 FTE, 2.19%), Moderate (11,360.7 hrs, 6.31 FTE, 7.51%), and Optimistic (25,868 hrs, 14.37 FTE, 17.1%) outcomes on 151,275.8 baseline hours. Department-level breakdown shown below the matrix.*
+
+### Task Opportunity Explorer
+![Task Opportunity Explorer](docs/images/task-opportunity-explorer.png)
+*Searchable and filterable catalog. The API loads the top 200 tasks by opportunity score; up to 100 are shown per view (as confirmed by the "Showing 100 of 200 matching tasks" label). Each row shows Priority Tier badge, task description, domain, annual hours, AI fit category, and opportunity score. The "Explain" button opens the full multi-factor scoring modal.*
+
+### Organization Data & CSV Upload
+![Organization Data](docs/images/organization-data.png)
+*Organization Task Usage Management tab showing the currently loaded Nexus Institute for Advanced Research dataset (150 task allocations, 100% matched to SciNet, 151,275.8 annual task hours) with the CSV upload form for custom organization data.*
+
+### Exports & Reports
+![Exports and Reports](docs/images/reports-and-exports.png)
+*Decision Brief & Data Exports tab with four download cards: Executive Decision Brief (Markdown), Task Opportunity Scoring (CSV), Scenario Simulation Matrix (CSV), and Domain Summary Benchmark (CSV).*
 
 ---
 
@@ -218,41 +237,52 @@ Institute for Social Sciences,Data Analyst,Fit Bayesian hierarchical model to su
    ```bash
    uv run python app/cli.py load-org my_org_data.csv
    ```
-The pipeline matches tasks against `scinet_tasks_master` using composite hierarchy keys and falls back gracefully when subfields are omitted. Failed uploads automatically roll back without corrupting database state.
+
+The pipeline matches tasks against `scinet_tasks_master` using composite hierarchy keys and falls back gracefully when subfields are omitted. Failed uploads automatically roll back without corrupting the baseline database state.
 
 ---
 
 ## 9. Analytical Methodology & Scoring Engine
 
-Every task is evaluated across six transparent analytical dimensions (0–100 scale):
+Every task is evaluated across six transparent analytical dimensions (0-100 scale):
 
-1. **Time Exposure Score ($S_{\text{time}}$):**
-   $$S_{\text{time}} = \min\left(100, \frac{\log_{10}(\max(1, \text{hours}))}{\log_{10}(500)} \times 100\right)$$
-   Reflects the annual workload footprint. Tasks taking $\ge 500$ hours/year score 100.
+1. **Time Exposure Score (S_time):**
 
-2. **AI Suitability Score ($S_{\text{ai}}$):**
-   $$S_{\text{ai}} = 0.40 \cdot \text{Info\_Medium} + 0.30 \cdot \text{Cognitive\_Fit} + 0.20 \cdot \text{Mode\_Alignment} + 0.10 \cdot \text{Verification\_Density}$$
+   `S_time = min(100, log10(max(1, hours)) / log10(500) * 100)`
+
+   Reflects the annual workload footprint. Tasks taking >= 500 hours/year score 100.
+
+2. **AI Suitability Score (S_ai):**
+
+   `S_ai = 0.40 * Info_Medium + 0.30 * Cognitive_Fit + 0.20 * Mode_Alignment + 0.10 * Verification_Density`
+
    Synthesizes digital information density, cognitive complexity alignment, and qualitative/quantitative modes.
 
-3. **Physical-Work Intensity Gate ($P_{\text{phys}}$):**
-   $$P_{\text{phys}} = 0.70 \cdot \text{Materials\_Medium} + 0.30 \cdot \left(\frac{\text{Physical\_Deployment}}{5.0} \times 100\right)$$
+3. **Physical-Work Intensity Gate (P_phys):**
+
+   `P_phys = 0.70 * Materials_Medium + 0.30 * (Physical_Deployment / 5.0 * 100)`
+
    Tasks requiring physical laboratory materials or in-situ deployment are strictly gated.
 
-4. **Regulatory & Operational Penalty ($R_{\text{reg}}$):**
-   $$R_{\text{reg}} = 0.80 \cdot \left(\frac{\text{Regulatory\_Restriction}}{5.0} \times 100\right) + (\text{Is\_Core} \times 15.0)$$
+4. **Regulatory & Operational Penalty (R_reg):**
+
+   `R_reg = 0.80 * (Regulatory_Restriction / 5.0 * 100) + (Is_Core * 15.0)`
+
    Penalizes tasks bound by ethics protocols, human subject oversight, or legal sign-offs.
 
-5. **Feasibility Score ($S_{\text{feas}}$):**
-   $$S_{\text{feas}} = S_{\text{ai}} \times \left(1 - \frac{P_{\text{phys}}}{100}\right) \times \left(1 - 0.70 \cdot \frac{R_{\text{reg}}}{100}\right)$$
+5. **Feasibility Score (S_feas):**
 
-6. **Composite Capacity Opportunity Score ($S_{\text{opp}}$):**
-   $$S_{\text{opp}} = \left(0.50 \cdot S_{\text{time}} + 0.50 \cdot S_{\text{feas}}\right) \times \left(1 - 0.40 \cdot \frac{S_{\text{adopt}}}{100}\right)$$
+   `S_feas = S_ai * (1 - P_phys / 100) * (1 - 0.70 * R_reg / 100)`
+
+6. **Composite Capacity Opportunity Score (S_opp):**
+
+   `S_opp = (0.50 * S_time + 0.50 * S_feas) * (1 - 0.40 * S_adopt / 100)`
 
 ### Priority Tiers:
-- **Tier 1: Immediate Opportunity ($S_{\text{opp}} \ge 65$):** High workload + high feasibility + minimal physical gating.
-- **Tier 2: Targeted Augmentation ($45 \le S_{\text{opp}} < 65$):** Meaningful time release with moderate human-in-the-loop review.
-- **Tier 3: Exploratory / Minor ($25 \le S_{\text{opp}} < 45$).**
-- **Tier 4: Deprioritized / Blocked ($S_{\text{opp}} < 25$).**
+- **Tier 1: Immediate Opportunity (S_opp >= 65):** High workload + high feasibility + minimal physical gating.
+- **Tier 2: Targeted Augmentation (45 <= S_opp < 65):** Meaningful time release with moderate human-in-the-loop review.
+- **Tier 3: Exploratory / Minor (25 <= S_opp < 45).**
+- **Tier 4: Deprioritized / Blocked (S_opp < 25).**
 
 ---
 
@@ -260,8 +290,10 @@ Every task is evaluated across six transparent analytical dimensions (0–100 sc
 
 Capacity release is simulated across three governance stances:
 
-$$\Delta H_i = H_i \times \text{Adoption\_Rate} \times \left[\text{Gross\_Efficiency} \times (1 - \text{Verification\_Friction})\right] \times \frac{S_{\text{feas}, i}}{100}$$
-$$\text{FTE Equivalent} = \frac{\Delta H_i}{1800 \text{ hrs/year}}$$
+```
+Delta_H_i = H_i * Adoption_Rate * [Gross_Efficiency * (1 - Verification_Friction)] * (S_feas_i / 100)
+FTE_Equivalent = Delta_H_i / 1800 hrs/year
+```
 
 | Scenario | Adoption Rate | Gross Speedup | Verification Friction | Net Efficiency Factor |
 |---|---:|---:|---:|---:|
@@ -289,7 +321,7 @@ Running `app/cli.py export` or `export_all_reports()` automatically generates fo
 
 ## 12. Testing & Quality Verification
 
-The test suite covers unit tests, schema validation, normalization preservation, database integrity, scoring logic, scenario calculations, HTTP routes, multipart CSV uploads, and CLI commands.
+The test suite covers unit tests, schema validation, normalization preservation, database integrity, scoring logic, scenario calculations, HTTP routes, multipart CSV uploads, session isolation, and CLI commands.
 
 Execute tests using pytest:
 
@@ -305,37 +337,160 @@ uv run python tests/functional_qa_runner.py
 
 ### Test Suite Summary:
 ```text
-tests/test_analytics.py                     3 passed
-tests/test_app_cli.py                       2 passed
-tests/test_database.py                      3 passed
-tests/test_ingestion.py                     4 passed
-tests/test_normalization.py                 2 passed
-tests/test_reporting.py                     2 passed
-tests/test_scenarios.py                     2 passed
-tests/test_validation.py                    3 passed
-tests/test_web_app.py                      23 passed
-============================= 44 passed in 10.09s =============================
+tests/test_analytics.py              3 passed
+tests/test_app_cli.py                2 passed
+tests/test_database.py               3 passed
+tests/test_ingestion.py              4 passed
+tests/test_normalization.py          2 passed
+tests/test_reporting.py              2 passed
+tests/test_scenarios.py              2 passed
+tests/test_validation.py             3 passed
+tests/test_web_app.py               27 passed
+================================= 48 passed ==================================
+
+Functional QA runner: 10/10 suites passed (100% success)
 ```
 
----
-
-## 13. Deployment Guide
-
-The application is cloud-ready and can be deployed to free hosting platforms such as **Render** or **Hugging Face Spaces**.
-
-### Deploying on Render (Free Web Service)
-1. Fork or push this repository to your GitHub account.
-2. Sign in to [Render](https://render.com) and click **New > Web Service**.
-3. Select your repository.
-4. Configure the service:
-   - **Runtime:** `Python 3`
-   - **Build Command:** `pip install uv && uv sync --system-certs` (or `pip install duckdb pandas pytest`)
-   - **Start Command:** `python app/web_app.py --port $PORT`
-5. The application will bind to the dynamically assigned `$PORT` environment variable and expose the `/health` endpoint for uptime monitoring.
+Execution time varies by machine. The functional QA runner exercises live database queries, scenario engine calculations, upload safety, and report content -- not just unit logic.
 
 ---
 
-## 14. Known Limitations & Governance Caveats
+## 13. Skills & Technologies Demonstrated
+
+This project was built without a web framework or BI platform -- no Streamlit, Flask, FastAPI, Dash, or BI tool handles the dashboard, routing, or data layer. Every layer is hand-crafted and verifiable in the source code.
+
+### Programming & Software Engineering
+- **Python 3.13** -- Type hints, `pathlib`, `io.BytesIO`, `hashlib`, `email.message` for MIME multipart parsing (replacing the Python 3.13-removed `cgi` module), `uuid`, `threading`, `socketserver`
+- **Object-Oriented Design** -- `SessionState`, `SessionManager`, `ScoringEngine`, `ScenarioEngine` with clear separation of concerns
+- **Standard Library HTTP Server** -- `http.server.BaseHTTPRequestHandler` + `socketserver.ThreadingMixIn` for concurrent multi-visitor handling with zero external web framework dependencies
+- **Multipart Form Parsing** -- Custom `email`-module-based MIME parser for `multipart/form-data` CSV uploads
+- **Cookie-Based Session Management** -- `HttpOnly; SameSite=Lax` session cookies with 30-minute TTL (`SESSION_TTL_SECONDS = 1800`) and LRU eviction at 50 concurrent sessions (`MAX_SESSIONS = 50`)
+
+### Database & Data Engineering
+- **DuckDB** -- Embedded in-process analytical OLAP SQL engine; schema design, DDL, DML, aggregate views, deterministic SHA-256 task ID generation in SQL
+- **Pandas** -- Multi-source DataFrame ingestion, schema normalization, outer joins, type coercion
+- **SQL** -- GROUP BY aggregations, LEFT JOIN resolution, `CREATE VIEW` materialization, `ATTACH` / `DETACH` for read-only baseline access
+- **Data Pipeline Design** -- Seven-stage ETL pipeline: raw CSV ingest -> validation -> normalization -> DuckDB load -> scoring -> simulation -> report export
+- **Per-Visitor Session Isolation** -- Each CSV-uploading visitor receives an isolated in-memory DuckDB (`:memory:`) with the baseline catalog attached read-only; uploads and simulations execute in RAM and are not persisted to disk
+
+### Analytical Modeling
+- **Multi-Factor Scoring Engine** -- 6-dimensional weighted composite formula with physical-work intensity gate and regulatory penalty functions
+- **Scenario Simulation** -- Parameterized Conservative / Moderate / Optimistic capacity-release model with configurable adoption rate, gross efficiency, and verification friction
+- **FTE Conversion** -- Annualized hours-to-headcount translation using 1,800 hrs/year baseline
+- **Priority Tier Classification** -- Threshold-based Tier 1-4 decision rule applied across 27,823 tasks
+
+### Web Development & UI
+- **Single-Page Dashboard** -- HTML/CSS/JavaScript dashboard embedded in `app/web_app.py`; no bundler, no build step, no external JavaScript libraries
+- **CSS3 Grid Layout** -- Responsive KPI card grid, tabbed navigation, scrollable task explorer table
+- **Vanilla JavaScript** -- Fetch API for async data loading, real-time keyword search and filter, modal dialogs, tab switching, file upload UX
+
+### Security & Reliability Engineering
+- **Path Traversal Prevention** -- `ALLOWED_REPORT_FILES` allowlist; file name validated against the set before any `open()` call; names containing `..`, `/`, or `\` rejected with HTTP 400
+- **Input Validation** -- Required column check, type coercion guards, 2 MB upload ceiling (`MAX_UPLOAD_BYTES`), HTTP 413 on oversized uploads, empty-file detection
+- **Error Message Sanitization** -- `sanitize_error_message()` strips Windows drive paths and Linux root paths (e.g. `/opt/render/...`) from error strings before returning them to the client, truncated to 200 characters
+- **Upload Rollback** -- Failed CSV ingestion raises before modifying the session database, leaving state unchanged
+
+### Testing & Quality Assurance
+- **pytest** -- 48 unit and integration tests across 9 modules covering analytics, database, ingestion, normalization, scenarios, reporting, CLI, and HTTP routes
+- **Functional QA Runner** -- 10-suite end-to-end QA script (`tests/functional_qa_runner.py`) verifying live database correctness, scoring engine fidelity, scenario arithmetic, upload safety, and report content
+- **HTTP Route Testing** -- Multipart POST upload simulation, path traversal blocking, 404/400/413 error responses, health check endpoint, session isolation, and upload size limit
+
+### DevOps & Deployment
+- **uv** -- Deterministic dependency management with `uv.lock`; reproducible installs across OS platforms
+- **Git / GitHub** -- Clean `.gitignore`, attribution documentation, private repository
+- **Render Deployment Config** -- `render.yaml` blueprint for zero-configuration free-tier cloud deployment
+- **Health Endpoints** -- `/health` and `/api/health` JSON endpoints for container health checks
+
+---
+
+## 14. Future Implementations
+
+The following enhancements are **planned** and not yet implemented.
+
+### Public Deployment
+- **Render Free Tier Launch:** Deploy the application to a publicly accessible URL so portfolio reviewers, collaborators, and hiring managers can interact with it without cloning the repository. The source repository will remain private; only the hosted web service will be public.
+- **Custom Domain:** Configure a memorable subdomain once the Render service is live.
+
+### Dashboard & UX Improvements
+- **Persistent URL State:** Encode active tab, search query, and domain filter into the browser URL hash so users can share deep links to specific views.
+- **Sortable Columns:** Make all Task Opportunity Explorer table columns sortable client-side by clicking headers.
+- **Export Filtered View:** Allow users to download only the currently visible (filtered/searched) rows of the task explorer as a CSV.
+- **Dark Mode Toggle:** Add a light/dark theme switcher persisted in `localStorage`.
+- **Pagination Controls:** Replace the current 100-row display cap (100 shown from 200 loaded) with configurable pagination (25 / 50 / 100 / All rows).
+
+### Expanded Analytics
+- **Sensitivity Analysis Panel:** Interactive sliders to adjust adoption rate, gross speedup, and verification friction parameters and observe real-time scenario output changes -- without committing to a fixed scenario preset.
+- **Benchmarking Comparisons:** Upload two organization CSVs and display a side-by-side departmental comparison view.
+- **Historical Trend Simulation:** Model year-over-year capacity release growth as AI adoption matures from Conservative toward Optimistic over a 3-5 year horizon.
+- **Domain Heat Map:** Visual heatmap of opportunity scores across SciNet scientific domains and subfields.
+
+### Data & Methodology Enhancements
+- **Scoring Parameter Versioning:** Maintain a versioned configuration file for scoring weights so parameter updates are traceable and comparable across runs.
+- **Confidence Interval Reporting:** Surface uncertainty ranges on FTE release estimates based on parameter sensitivity bounds.
+
+---
+
+## 15. Deployment Guide
+
+The application is architected for zero-cost, cloud-ready deployment on **Render's Free Web Service** tier or any standard Linux container. Deployment has not yet been performed; the steps below are the planned procedure.
+
+### Planned Architecture on Render Free Tier
+
+| Specification | Free Tier Detail | Architectural Handling |
+| :--- | :--- | :--- |
+| **Compute** | 0.1 CPU, 512 MB RAM | Zero-dependency standard library HTTP server + in-process DuckDB |
+| **Filesystem** | Ephemeral (resets on restart/spin-down) | Committed baseline database (`research_task_analyzer.duckdb`) is read-only at runtime; custom uploads execute in RAM |
+| **Visitor Data** | Multi-visitor public access | Ephemeral in-memory DuckDB sessions per visitor; uploads and simulations are isolated via cookies and never written to disk |
+| **Concurrency** | Shared compute | Threaded HTTP server with per-session locks; baseline database opened read-only |
+| **Idle Behavior** | Spin-down after 15 min of inactivity; approximately 1 min to spin back up | Application boots directly into DuckDB-ready state; no warm-up data loading required |
+
+---
+
+### Step-by-Step Deployment on Render
+
+#### Option A: One-Click Blueprint Deployment (Recommended)
+This repository includes a [`render.yaml`](render.yaml) specification:
+1. Authorize Render to access this GitHub repository through the [Render GitHub integration](https://render.com/docs/github). The repository can remain **private** -- Render's GitHub App does not require public visibility.
+2. Go to the [Render Dashboard](https://dashboard.render.com/) and select **New > Blueprint**.
+3. Connect your GitHub repository. Render will automatically parse `render.yaml` and configure the service.
+4. Click **Apply**.
+
+#### Option B: Manual Web Service Setup
+1. In the [Render Dashboard](https://dashboard.render.com/), click **New > Web Service**.
+2. Connect your repository via the Render GitHub App (private repositories are supported).
+3. Configure settings:
+   - **Name:** `research-task-ai-analyzer`
+   - **Runtime:** `Python`
+   - **Branch:** `main`
+   - **Region:** `Oregon (US West)` or `Frankfurt (EU)`
+   - **Plan:** `Free`
+   - **Build Command:**
+     ```bash
+     pip install uv && uv sync --frozen
+     ```
+   - **Start Command:**
+     ```bash
+     uv run python app/web_app.py --port $PORT
+     ```
+   - **Health Check Path:** `/health`
+4. Add Environment Variable:
+   - `PYTHON_VERSION`: `3.13.3`
+5. Click **Create Web Service**.
+
+---
+
+### Visitor Isolation & Ephemeral Data Handling
+
+- **Public Demonstration Baseline:** All visitors view the pre-computed **Nexus Institute for Advanced Research** demonstration dataset from the read-only committed DuckDB database.
+- **Custom CSV Uploads:** When a visitor uploads their organization's CSV, an ephemeral in-memory DuckDB database is spawned for that visitor's session, tracked via an `HttpOnly` session cookie.
+- **Ephemeral Visitor Data:** Custom uploads and scenario simulations execute entirely in RAM. The baseline database file and static reports on disk are not modified at runtime.
+- **Session Isolation:** Each visitor's upload is isolated to their own in-memory session. Other visitors browsing simultaneously see only the baseline dataset (or their own session data).
+- **Session Reset:** Visitors can return to the baseline dataset by clicking **Reset to Baseline** or visiting `/api/reset`.
+- **Session Expiry:** In-memory sessions expire after 30 minutes of inactivity (`SESSION_TTL_SECONDS = 1800`) and are capped at 50 concurrent sessions (`MAX_SESSIONS = 50`) with LRU eviction.
+
+---
+
+## 16. Known Limitations & Governance Caveats
 
 1. **No Autonomous Laboratory Execution:** Generative AI models operate exclusively in digital and informational domains. Tasks requiring wet-lab chemical synthesis, surgical trials, or physical specimen collection cannot be executed by digital models alone.
 2. **Mandatory Human Accountability:** Scientific peer review and regulatory bodies require authoritative human accountability. AI augmentation cannot replace the principal investigator's liability.
@@ -344,7 +499,7 @@ The application is cloud-ready and can be deployed to free hosting platforms suc
 
 ---
 
-## 15. License & Third-Party Attribution
+## 17. License & Third-Party Attribution
 
 - **Application Code:** MIT License (see [LICENSE](LICENSE)).
 - **SciNet Datasets:** Creative Commons Attribution 4.0 International (CC BY 4.0) by Lukas Althoff et al. (see [LICENSES.md](LICENSES.md)).

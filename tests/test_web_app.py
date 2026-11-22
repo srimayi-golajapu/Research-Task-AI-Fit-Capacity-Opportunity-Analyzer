@@ -456,3 +456,107 @@ def test_threaded_http_server_concurrent_requests():
     assert all(results)
 
 
+def test_multi_visitor_session_isolation():
+    """Verify that Visitor A's upload is isolated to their session and does not affect Visitor B."""
+    boundary = "----BoundaryIsoTest"
+    csv_content = (
+        "department,role,task,fte_count,weekly_hours_per_fte,weeks_per_year,organization_name\r\n"
+        "Advanced AI,Lead Scientist,Develop new analytical calculational formalisms to extend theory into previously inaccessible regimes,2,10.0,40,Apex Research Labs\r\n"
+    )
+    body = (
+        f"--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="csv_file"; filename="apex.csv"\r\n'
+        f"Content-Type: text/csv\r\n\r\n"
+        f"{csv_content}\r\n"
+        f"--{boundary}--\r\n"
+    ).encode("utf-8")
+
+    headers = {
+        "Content-Type": f"multipart/form-data; boundary={boundary}",
+        "Content-Length": str(len(body))
+    }
+    # Visitor A uploads
+    h_a = make_handler("POST", "/api/upload", headers=headers, body=body)
+    h_a.do_POST()
+    assert h_a.status_code == 303
+    set_cookie = h_a.response_headers.get("Set-Cookie", "")
+    assert "session_id=" in set_cookie
+
+    # Extract session_id for Visitor A
+    import re
+    m = re.search(r"session_id=([0-9a-f-]+)", set_cookie)
+    assert m is not None
+    sess_id = m.group(1)
+
+    # Visitor A queries /api/org_summary with their session cookie
+    h_a_summary = make_handler("GET", "/api/org_summary", headers={"Cookie": f"session_id={sess_id}"})
+    h_a_summary.do_GET()
+    assert h_a_summary.status_code == 200
+    data_a = json.loads(h_a_summary.wfile.getvalue().decode("utf-8"))
+    assert data_a["organization_name"] == "Apex Research Labs"
+    assert data_a["is_custom_upload"] is True
+
+    # Visitor B queries /api/org_summary with NO cookie
+    h_b_summary = make_handler("GET", "/api/org_summary")
+    h_b_summary.do_GET()
+    assert h_b_summary.status_code == 200
+    data_b = json.loads(h_b_summary.wfile.getvalue().decode("utf-8"))
+    assert data_b["organization_name"] == "Nexus Institute for Advanced Research"
+    assert data_b["is_custom_upload"] is False
+
+    # Visitor A downloads executive brief (personalized to Apex Research Labs)
+    h_a_brief = make_handler("GET", "/reports/executive_decision_brief.md", headers={"Cookie": f"session_id={sess_id}"})
+    h_a_brief.do_GET()
+    assert h_a_brief.status_code == 200
+    brief_a = h_a_brief.wfile.getvalue().decode("utf-8")
+    assert "Apex Research Labs" in brief_a
+
+    # Visitor B downloads executive brief (baseline Nexus Institute)
+    h_b_brief = make_handler("GET", "/reports/executive_decision_brief.md")
+    h_b_brief.do_GET()
+    assert h_b_brief.status_code == 200
+    brief_b = h_b_brief.wfile.getvalue().decode("utf-8")
+    assert "Nexus Institute for Advanced Research" in brief_b
+    assert "Apex Research Labs" not in brief_b
+
+
+def test_upload_size_limit_exceeded_returns_413():
+    """Verify that uploading a payload larger than 2 MB is rejected with HTTP 413."""
+    headers = {
+        "Content-Type": "multipart/form-data; boundary=----Bound",
+        "Content-Length": str(3 * 1024 * 1024)  # 3 MB
+    }
+    h = make_handler("POST", "/api/upload", headers=headers, body=b"")
+    h.do_POST()
+    assert h.status_code == 413
+
+
+def test_api_reset_clears_session():
+    """Verify that /api/reset clears the visitor's session and returns an expiring cookie."""
+    from app.web_app import SessionManager, BASELINE_DB_PATH
+    session = SessionManager.create_or_get(None, BASELINE_DB_PATH)
+    sid = session.session_id
+
+    assert SessionManager.get(sid) is not None
+
+    h = make_handler("GET", "/api/reset", headers={"Cookie": f"session_id={sid}"})
+    h.do_GET()
+    assert h.status_code == 303
+    assert "/?status=reset" in h.response_headers.get("Location", "")
+    set_cookie = h.response_headers.get("Set-Cookie", "")
+    assert "Max-Age=0" in set_cookie
+    assert SessionManager.get(sid) is None
+
+
+def test_error_message_path_sanitization():
+    """Verify that internal server filesystem paths are stripped from error messages."""
+    from app.web_app import sanitize_error_message
+    msg_win = r"Failed to open C:\Users\Acer\Downloads\secret_project\data.csv: File not found"
+    clean_win = sanitize_error_message(msg_win)
+    assert r"C:\Users\Acer" not in clean_win
+    assert "[path]" in clean_win
+
+    msg_linux = "Failed to load /opt/render/project/src/secret.db: error"
+    clean_linux = sanitize_error_message(msg_linux)
+    assert "/opt/render" not in clean_linux
+    assert "[path]" in clean_linux

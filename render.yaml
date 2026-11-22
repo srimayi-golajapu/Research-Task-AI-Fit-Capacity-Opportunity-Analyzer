@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: research-task-ai-analyzer
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: "pip install uv && uv sync --frozen"
+    startCommand: "uv run python app/web_app.py --port $PORT"
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.3"
