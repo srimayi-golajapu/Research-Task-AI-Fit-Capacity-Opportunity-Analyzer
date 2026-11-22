@@ -1,0 +1,7 @@
+domain,total_tasks,avg_time_exposure,avg_ai_suitability,avg_physical_intensity,avg_regulatory_penalty,avg_opportunity_score,high_fit_tasks,moderate_fit_tasks,constrained_tasks
+Arts & Humanities,4171,32.21,52.32,0.84,12.82,34.96,385,3651,7
+Formal Sciences,2070,31.12,53.81,0.7,13.15,34.93,238,1796,10
+Social Sciences,8904,27.62,52.44,0.62,14.65,32.72,865,7575,30
+Health Sciences,2886,26.31,50.89,2.86,17.75,30.95,170,2386,60
+Physical Sciences,5918,26.68,50.55,8.29,13.74,30.78,343,4865,604
+Life Sciences,3874,25.58,49.46,7.1,14.13,30.22,143,3241,327

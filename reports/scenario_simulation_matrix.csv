@@ -1,0 +1,451 @@
+scenario_id,scenario_name,task_id,department,role,baseline_annual_hours,potential_hours_released,effective_capacity_released_pct,net_hours_retained,fte_capacity_equivalent
+SCEN_CONSERVATIVE,Conservative Scenario,t_9d6bb1033ff9fe,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2745.6,94.9,3.46,2650.7,0.053
+SCEN_CONSERVATIVE,Conservative Scenario,t_cca67657e6ede7,Humanities & Spatial Design Center,Postdoctoral Fellow,3480.0,76.3,2.19,3403.7,0.042
+SCEN_CONSERVATIVE,Conservative Scenario,t_cb6effaed0bd54,Department of Biosciences & Genomics,Senior Research Scientist,3148.8,69.0,2.19,3079.8,0.038
+SCEN_CONSERVATIVE,Conservative Scenario,t_b511db628dc56d,Humanities & Spatial Design Center,Research Associate / Data Analyst,3010.0,66.0,2.19,2944.0,0.037
+SCEN_CONSERVATIVE,Conservative Scenario,t_3ea134ff42c505,Center for Physics & Advanced Materials,Graduate Research Assistant,2835.0,62.2,2.19,2772.8,0.035
+SCEN_CONSERVATIVE,Conservative Scenario,t_352478e28ef6b5,Center for Physics & Advanced Materials,Graduate Research Assistant,2730.0,59.9,2.19,2670.1,0.033
+SCEN_CONSERVATIVE,Conservative Scenario,t_37e040498c5be6,Center for Physics & Advanced Materials,Senior Research Scientist,2620.8,57.5,2.19,2563.3,0.032
+SCEN_CONSERVATIVE,Conservative Scenario,t_2a71f83d071514,Department of Biosciences & Genomics,Postdoctoral Fellow,1520.0,55.2,3.63,1464.8,0.031
+SCEN_CONSERVATIVE,Conservative Scenario,t_9118e92e80ace8,Center for Physics & Advanced Materials,Postdoctoral Fellow,2496.0,54.7,2.19,2441.3,0.03
+SCEN_CONSERVATIVE,Conservative Scenario,t_79806a2f4f6abe,Department of Biosciences & Genomics,Senior Research Scientist,2346.0,51.4,2.19,2294.6,0.029
+SCEN_CONSERVATIVE,Conservative Scenario,t_a49cc4f190ccd6,Department of Biosciences & Genomics,Graduate Research Assistant,2318.4,50.8,2.19,2267.6,0.028
+SCEN_CONSERVATIVE,Conservative Scenario,t_19444e22faaef3,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1729.6,47.9,2.77,1681.7,0.027
+SCEN_CONSERVATIVE,Conservative Scenario,t_dbe5675481fc02,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2171.2,47.6,2.19,2123.6,0.026
+SCEN_CONSERVATIVE,Conservative Scenario,t_df5041cb776d65,Humanities & Spatial Design Center,Research Associate / Data Analyst,2162.0,47.4,2.19,2114.6,0.026
+SCEN_CONSERVATIVE,Conservative Scenario,t_0ded642fea3411,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2100.0,46.0,2.19,2054.0,0.026
+SCEN_CONSERVATIVE,Conservative Scenario,t_8d853aff9710b6,Department of Biosciences & Genomics,Research Associate / Data Analyst,1848.0,45.3,2.45,1802.7,0.025
+SCEN_CONSERVATIVE,Conservative Scenario,t_7b794b91d3ef1d,Center for Physics & Advanced Materials,Research Associate / Data Analyst,2050.0,45.0,2.19,2005.0,0.025
+SCEN_CONSERVATIVE,Conservative Scenario,t_1eb7be0aa8d1fc,Humanities & Spatial Design Center,Postdoctoral Fellow,2000.0,43.9,2.19,1956.1,0.024
+SCEN_CONSERVATIVE,Conservative Scenario,t_b3e0abdcd5d6ff,Institute for Empirical Social Sciences,Graduate Research Assistant,1996.8,43.8,2.19,1953.0,0.024
+SCEN_CONSERVATIVE,Conservative Scenario,t_4cffb9b87c4cc4,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1752.0,42.3,2.42,1709.7,0.024
+SCEN_CONSERVATIVE,Conservative Scenario,t_7960136bec392c,Center for Physics & Advanced Materials,Postdoctoral Fellow,1875.0,41.1,2.19,1833.9,0.023
+SCEN_CONSERVATIVE,Conservative Scenario,t_5073c3e1902683,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1840.0,40.3,2.19,1799.7,0.022
+SCEN_CONSERVATIVE,Conservative Scenario,t_480794ba0591a2,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1324.8,40.2,3.03,1284.6,0.022
+SCEN_CONSERVATIVE,Conservative Scenario,t_9939bed40eeb36,Humanities & Spatial Design Center,Graduate Research Assistant,1824.0,40.0,2.19,1784.0,0.022
+SCEN_CONSERVATIVE,Conservative Scenario,t_ebd94006ba2682,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1375.0,37.3,2.71,1337.7,0.021
+SCEN_CONSERVATIVE,Conservative Scenario,t_a84922109b833a,Humanities & Spatial Design Center,Principal Investigator / Professor,1689.6,37.0,2.19,1652.6,0.021
+SCEN_CONSERVATIVE,Conservative Scenario,t_0efa54e1657c59,Center for Physics & Advanced Materials,Postdoctoral Fellow,1632.0,35.8,2.19,1596.2,0.02
+SCEN_CONSERVATIVE,Conservative Scenario,t_8fd2665a06395a,Department of Biosciences & Genomics,Postdoctoral Fellow,1619.2,35.5,2.19,1583.7,0.02
+SCEN_CONSERVATIVE,Conservative Scenario,t_4916ceaa4a2a82,Department of Biosciences & Genomics,Graduate Research Assistant,1444.8,35.4,2.45,1409.4,0.02
+SCEN_CONSERVATIVE,Conservative Scenario,t_c7afbef2d86da6,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1260.0,34.9,2.77,1225.1,0.019
+SCEN_CONSERVATIVE,Conservative Scenario,t_1658bd961bc319,Institute for Empirical Social Sciences,Graduate Research Assistant,1540.0,33.8,2.19,1506.2,0.019
+SCEN_CONSERVATIVE,Conservative Scenario,t_1d9be70ad83cdd,Department of Biosciences & Genomics,Postdoctoral Fellow,1478.4,32.4,2.19,1446.0,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_db0d033bc7cd48,Department of Biosciences & Genomics,Senior Research Scientist,1320.0,32.3,2.45,1287.7,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_bbacec7036688b,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1470.0,32.2,2.19,1437.8,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_09503227dd42ae,Center for Physics & Advanced Materials,Principal Investigator / Professor,1470.0,32.2,2.19,1437.8,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_1ed20d6ae355f7,Institute for Empirical Social Sciences,Graduate Research Assistant,1411.2,31.8,2.25,1379.4,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_7205e83bb02852,Humanities & Spatial Design Center,Graduate Research Assistant,1440.0,31.6,2.19,1408.4,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_ccc77993b8b121,Humanities & Spatial Design Center,Senior Research Scientist,1440.0,31.6,2.19,1408.4,0.018
+SCEN_CONSERVATIVE,Conservative Scenario,t_0584370a7581ee,Humanities & Spatial Design Center,Senior Research Scientist,1425.0,31.2,2.19,1393.8,0.017
+SCEN_CONSERVATIVE,Conservative Scenario,t_01c51862049a98,Humanities & Spatial Design Center,Research Associate / Data Analyst,1416.8,31.1,2.19,1385.7,0.017
+SCEN_CONSERVATIVE,Conservative Scenario,t_0b3bf743920d64,Institute for Empirical Social Sciences,Graduate Research Assistant,1398.4,30.7,2.19,1367.7,0.017
+SCEN_CONSERVATIVE,Conservative Scenario,t_3bda7be28d4d21,Institute for Empirical Social Sciences,Graduate Research Assistant,1357.0,29.8,2.19,1327.2,0.017
+SCEN_CONSERVATIVE,Conservative Scenario,t_4144fe01468d7e,Institute for Empirical Social Sciences,Research Associate / Data Analyst,883.2,29.4,3.33,853.8,0.016
+SCEN_CONSERVATIVE,Conservative Scenario,t_a350c36eee3040,Department of Biosciences & Genomics,Principal Investigator / Professor,1320.0,28.9,2.19,1291.1,0.016
+SCEN_CONSERVATIVE,Conservative Scenario,t_eb23201253fe6d,Department of Biosciences & Genomics,Senior Research Scientist,1305.6,28.6,2.19,1277.0,0.016
+SCEN_CONSERVATIVE,Conservative Scenario,t_7bb214f8275d7f,Institute for Empirical Social Sciences,Graduate Research Assistant,1250.0,27.4,2.19,1222.6,0.015
+SCEN_CONSERVATIVE,Conservative Scenario,t_af4e4effd56dc0,Institute for Empirical Social Sciences,Senior Research Scientist,1228.8,26.9,2.19,1201.9,0.015
+SCEN_CONSERVATIVE,Conservative Scenario,t_bb65ec0d848ec3,Department of Biosciences & Genomics,Research Associate / Data Analyst,1228.2,26.9,2.19,1201.3,0.015
+SCEN_CONSERVATIVE,Conservative Scenario,t_46f43e9dd53dc0,Humanities & Spatial Design Center,Senior Research Scientist,816.0,25.4,3.11,790.6,0.014
+SCEN_CONSERVATIVE,Conservative Scenario,t_27957aa0f07644,Humanities & Spatial Design Center,Research Associate / Data Analyst,1160.0,25.4,2.19,1134.6,0.014
+SCEN_CONSERVATIVE,Conservative Scenario,t_b8c2f81ab71c16,Center for Physics & Advanced Materials,Senior Research Scientist,1034.0,25.3,2.45,1008.7,0.014
+SCEN_CONSERVATIVE,Conservative Scenario,t_33668484d4b58b,Department of Biosciences & Genomics,Senior Research Scientist,1144.0,25.1,2.19,1118.9,0.014
+SCEN_CONSERVATIVE,Conservative Scenario,t_af7ed2be3cb5b4,Department of Biosciences & Genomics,Senior Research Scientist,1020.0,25.0,2.45,995.0,0.014
+SCEN_CONSERVATIVE,Conservative Scenario,t_882db4819b7e72,Humanities & Spatial Design Center,Graduate Research Assistant,1108.8,24.3,2.19,1084.5,0.013
+SCEN_CONSERVATIVE,Conservative Scenario,t_04ee224d832f32,Center for Physics & Advanced Materials,Graduate Research Assistant,1036.8,22.7,2.19,1014.1,0.013
+SCEN_CONSERVATIVE,Conservative Scenario,t_27e81ea20dcc2b,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1030.4,22.6,2.19,1007.8,0.013
+SCEN_CONSERVATIVE,Conservative Scenario,t_6318de1a516493,Humanities & Spatial Design Center,Principal Investigator / Professor,1022.4,22.4,2.19,1000.0,0.012
+SCEN_CONSERVATIVE,Conservative Scenario,t_d1ecee91b0c244,Center for Physics & Advanced Materials,Graduate Research Assistant,998.4,21.9,2.19,976.5,0.012
+SCEN_CONSERVATIVE,Conservative Scenario,t_6af055c7799a50,Department of Biosciences & Genomics,Principal Investigator / Professor,968.0,21.2,2.19,946.8,0.012
+SCEN_CONSERVATIVE,Conservative Scenario,t_0f37c5ef7aaf5e,Humanities & Spatial Design Center,Senior Research Scientist,968.0,21.2,2.19,946.8,0.012
+SCEN_CONSERVATIVE,Conservative Scenario,t_2e78aabf0cef46,Institute for Empirical Social Sciences,Postdoctoral Fellow,844.8,20.7,2.45,824.1,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_ce6c1e7f152226,Humanities & Spatial Design Center,Research Associate / Data Analyst,924.0,20.3,2.19,903.7,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_b489eef613a079,Institute for Empirical Social Sciences,Research Associate / Data Analyst,920.0,20.2,2.19,899.8,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_09a0f6165cfa1a,Institute for Empirical Social Sciences,Graduate Research Assistant,901.6,19.8,2.19,881.8,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_480d77713780c6,Humanities & Spatial Design Center,Principal Investigator / Professor,800.4,19.6,2.45,780.8,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_2ee3606534c080,Department of Biosciences & Genomics,Postdoctoral Fellow,883.2,19.4,2.19,863.8,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_3a189809f04165,Department of Biosciences & Genomics,Senior Research Scientist,874.0,19.2,2.19,854.8,0.011
+SCEN_CONSERVATIVE,Conservative Scenario,t_a55f68bb34bfd9,Institute for Empirical Social Sciences,Senior Research Scientist,809.6,17.8,2.19,791.8,0.01
+SCEN_CONSERVATIVE,Conservative Scenario,t_5af4d4a96f08fd,Institute for Empirical Social Sciences,Senior Research Scientist,600.0,17.7,2.95,582.3,0.01
+SCEN_CONSERVATIVE,Conservative Scenario,t_26e981e414accc,Humanities & Spatial Design Center,Principal Investigator / Professor,1555.2,17.6,1.13,1537.6,0.01
+SCEN_CONSERVATIVE,Conservative Scenario,t_51122d3edb9eee,Center for Physics & Advanced Materials,Principal Investigator / Professor,510.0,17.1,3.35,492.9,0.01
+SCEN_CONSERVATIVE,Conservative Scenario,t_bad95f39a37e1d,Humanities & Spatial Design Center,Postdoctoral Fellow,782.0,17.1,2.19,764.9,0.01
+SCEN_CONSERVATIVE,Conservative Scenario,t_15d12665849560,Institute for Empirical Social Sciences,Postdoctoral Fellow,695.2,17.0,2.45,678.2,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_ac58c355abbf03,Department of Biosciences & Genomics,Graduate Research Assistant,730.4,17.0,2.33,713.4,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_1dd7633f912cd3,Institute for Empirical Social Sciences,Postdoctoral Fellow,772.8,16.9,2.19,755.9,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_fb98b94250a12c,Institute for Empirical Social Sciences,Senior Research Scientist,759.0,16.6,2.19,742.4,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_438fbefc40ab48,Institute for Empirical Social Sciences,Research Associate / Data Analyst,748.8,16.4,2.19,732.4,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_3b5a45226afc85,Institute for Empirical Social Sciences,Research Associate / Data Analyst,720.0,15.8,2.19,704.2,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_2b13a39aa1b2d1,Center for Physics & Advanced Materials,Postdoctoral Fellow,710.4,15.6,2.19,694.8,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_5783ac16dbcc15,Department of Biosciences & Genomics,Principal Investigator / Professor,633.6,15.5,2.45,618.1,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_6d4d6a8b3c718f,Center for Physics & Advanced Materials,Principal Investigator / Professor,708.4,15.5,2.19,692.9,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_923e9431d9371a,Department of Biosciences & Genomics,Principal Investigator / Professor,696.0,15.3,2.19,680.7,0.009
+SCEN_CONSERVATIVE,Conservative Scenario,t_ebf1b11ef387e1,Center for Physics & Advanced Materials,Graduate Research Assistant,699.2,15.2,2.18,684.0,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_0a58e9b6511ee3,Humanities & Spatial Design Center,Senior Research Scientist,690.0,15.1,2.19,674.9,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_2dd72a2daa9162,Institute for Empirical Social Sciences,Senior Research Scientist,690.0,15.1,2.19,674.9,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_e7a89801aeaebf,Humanities & Spatial Design Center,Principal Investigator / Professor,651.2,14.3,2.19,636.9,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_357ad418b14027,Institute for Empirical Social Sciences,Senior Research Scientist,633.6,13.9,2.19,619.7,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_0ef8f59a69e352,Humanities & Spatial Design Center,Principal Investigator / Professor,633.6,13.9,2.19,619.7,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_d2dd35e677fd0b,Department of Biosciences & Genomics,Research Associate / Data Analyst,633.6,13.9,2.19,619.7,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_b3f0d18fb82ca0,Humanities & Spatial Design Center,Postdoctoral Fellow,621.0,13.6,2.19,607.4,0.008
+SCEN_CONSERVATIVE,Conservative Scenario,t_16ec549c49d572,Center for Physics & Advanced Materials,Postdoctoral Fellow,607.2,13.3,2.19,593.9,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_46e6413a59d94a,Humanities & Spatial Design Center,Research Associate / Data Analyst,734.4,13.3,1.81,721.1,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_204cf6f3c9a332,Institute for Empirical Social Sciences,Research Associate / Data Analyst,604.8,13.3,2.19,591.5,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_faf389b34c7a60,Department of Biosciences & Genomics,Principal Investigator / Professor,600.0,13.2,2.19,586.8,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_c2967b55b65fd2,Humanities & Spatial Design Center,Research Associate / Data Analyst,566.4,13.1,2.31,553.3,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_cfd700344383e2,Humanities & Spatial Design Center,Principal Investigator / Professor,579.6,12.7,2.19,566.9,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_e54f7ff5ce955f,Department of Biosciences & Genomics,Senior Research Scientist,571.2,12.5,2.19,558.7,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_d5051ecd867128,Institute for Empirical Social Sciences,Senior Research Scientist,570.4,12.5,2.19,557.9,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_bf8497afc3ef65,Humanities & Spatial Design Center,Graduate Research Assistant,496.8,12.2,2.45,484.6,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_96051ef0cabc1f,Humanities & Spatial Design Center,Principal Investigator / Professor,545.6,12.0,2.19,533.6,0.007
+SCEN_CONSERVATIVE,Conservative Scenario,t_ffde9f3c533b35,Center for Physics & Advanced Materials,Principal Investigator / Professor,405.0,11.7,2.89,393.3,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_c68c6a5099aeb9,Department of Biosciences & Genomics,Principal Investigator / Professor,475.2,11.6,2.45,463.6,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_7b672920e13814,Humanities & Spatial Design Center,Graduate Research Assistant,375.0,11.4,3.04,363.6,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_e8091fc08401fc,Center for Physics & Advanced Materials,Postdoctoral Fellow,450.0,11.0,2.45,439.0,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_0f8d4eb3920f2a,Humanities & Spatial Design Center,Research Associate / Data Analyst,460.0,10.8,2.35,449.2,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_d8ae66f45c0984,Institute for Empirical Social Sciences,Graduate Research Assistant,488.4,10.7,2.19,477.7,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_6a10275a3e63fb,Center for Physics & Advanced Materials,Senior Research Scientist,475.2,10.4,2.19,464.8,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_4123f659464038,Center for Physics & Advanced Materials,Research Associate / Data Analyst,469.2,10.3,2.19,458.9,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_43e52d595311fd,Department of Biosciences & Genomics,Senior Research Scientist,377.2,10.3,2.74,366.9,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_8f79561718b376,Department of Biosciences & Genomics,Graduate Research Assistant,326.4,10.2,3.13,316.2,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_b36f0a482b72f9,Center for Physics & Advanced Materials,Senior Research Scientist,460.8,10.1,2.19,450.7,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_33e3d155a01143,Center for Physics & Advanced Materials,Graduate Research Assistant,456.0,10.0,2.19,446.0,0.006
+SCEN_CONSERVATIVE,Conservative Scenario,t_1e91f77009b362,Institute for Empirical Social Sciences,Principal Investigator / Professor,445.0,9.8,2.19,435.2,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_f37ed6d0d09bd6,Humanities & Spatial Design Center,Senior Research Scientist,450.0,9.5,2.12,440.5,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_4a24cfb5fe38ef,Humanities & Spatial Design Center,Principal Investigator / Professor,386.4,9.5,2.45,376.9,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_7408e6bdf14680,Humanities & Spatial Design Center,Senior Research Scientist,386.4,9.5,2.45,376.9,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_b7206a4f8f3cc5,Center for Physics & Advanced Materials,Graduate Research Assistant,423.2,9.3,2.19,413.9,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_d4cd65b21ff4f2,Center for Physics & Advanced Materials,Graduate Research Assistant,420.0,9.2,2.19,410.8,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_0a41ebdbea0309,Institute for Empirical Social Sciences,Graduate Research Assistant,412.8,9.1,2.19,403.7,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_52afa83ca9ebd6,Center for Physics & Advanced Materials,Principal Investigator / Professor,1716.0,8.9,0.52,1707.1,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_66770f1a2d7dd8,Institute for Empirical Social Sciences,Postdoctoral Fellow,289.8,8.2,2.83,281.6,0.005
+SCEN_CONSERVATIVE,Conservative Scenario,t_c0e371fa225499,Institute for Empirical Social Sciences,Senior Research Scientist,370.0,8.1,2.19,361.9,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_4d8f5243ab25b3,Humanities & Spatial Design Center,Principal Investigator / Professor,326.4,8.0,2.45,318.4,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_99537ba50af22d,Department of Biosciences & Genomics,Senior Research Scientist,312.8,7.7,2.45,305.1,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_acc1665545cbeb,Cross-Disciplinary Research Unit,Postdoctoral Fellow,349.6,7.7,2.19,341.9,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_334eb19f19ed2f,Center for Physics & Advanced Materials,Principal Investigator / Professor,345.0,7.6,2.19,337.4,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_98602eccbbe605,Humanities & Spatial Design Center,Principal Investigator / Professor,340.4,7.5,2.19,332.9,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_d31bef7852bfc9,Humanities & Spatial Design Center,Graduate Research Assistant,303.6,7.1,2.32,296.5,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_f08d40b75a8075,Institute for Empirical Social Sciences,Senior Research Scientist,280.0,6.9,2.45,273.1,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_0fe56af53cc5bb,Humanities & Spatial Design Center,Graduate Research Assistant,315.0,6.9,2.19,308.1,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_f91b9bd5e509f6,Institute for Empirical Social Sciences,Graduate Research Assistant,281.6,6.6,2.33,275.0,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_265415efdde6f0,Center for Physics & Advanced Materials,Principal Investigator / Professor,290.4,6.4,2.19,284.0,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_29a1a95327e535,Department of Biosciences & Genomics,Principal Investigator / Professor,285.2,6.3,2.19,278.9,0.004
+SCEN_CONSERVATIVE,Conservative Scenario,t_2cded7ad75faf9,Center for Physics & Advanced Materials,Research Associate / Data Analyst,285.0,6.2,2.19,278.8,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_6747165bf646d2,Center for Physics & Advanced Materials,Senior Research Scientist,708.4,5.6,0.79,702.8,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_93f0ef37af982d,Department of Biosciences & Genomics,Senior Research Scientist,805.0,5.4,0.67,799.6,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_1c9ebd96dd9b21,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1227.6,5.2,0.43,1222.4,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_3ab77b114802f8,Department of Biosciences & Genomics,Postdoctoral Fellow,1408.0,5.2,0.37,1402.8,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_f92ce65e37921a,Department of Biosciences & Genomics,Senior Research Scientist,720.0,5.1,0.71,714.9,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_3e7886e07be499,Department of Biosciences & Genomics,Principal Investigator / Professor,225.6,4.9,2.19,220.7,0.003
+SCEN_CONSERVATIVE,Conservative Scenario,t_3359aae5862100,Department of Biosciences & Genomics,Postdoctoral Fellow,950.4,4.3,0.46,946.1,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_a090e78c68bc47,Department of Biosciences & Genomics,Graduate Research Assistant,193.2,4.2,2.19,189.0,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_48c1c18e313891,Department of Biosciences & Genomics,Graduate Research Assistant,167.2,4.1,2.45,163.1,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_c0daba5187d99f,Center for Physics & Advanced Materials,Research Associate / Data Analyst,262.2,3.7,1.43,258.5,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_1c3df927b181ff,Center for Physics & Advanced Materials,Research Associate / Data Analyst,160.0,3.5,2.19,156.5,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_782d9286614acf,Institute for Empirical Social Sciences,Principal Investigator / Professor,129.6,2.8,2.19,126.8,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_796ed5c4442bd2,Department of Biosciences & Genomics,Research Associate / Data Analyst,123.2,2.7,2.19,120.5,0.002
+SCEN_CONSERVATIVE,Conservative Scenario,t_144047c49263e9,Center for Physics & Advanced Materials,Graduate Research Assistant,110.0,2.4,2.19,107.6,0.001
+SCEN_CONSERVATIVE,Conservative Scenario,t_853831ad152cc3,Center for Physics & Advanced Materials,Principal Investigator / Professor,1040.0,2.1,0.2,1037.9,0.001
+SCEN_CONSERVATIVE,Conservative Scenario,t_9e3bedf535a203,Department of Biosciences & Genomics,Principal Investigator / Professor,470.4,0.6,0.12,469.8,0.0
+SCEN_MODERATE,Moderate Scenario,t_9d6bb1033ff9fe,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2745.6,325.3,11.85,2420.3,0.181
+SCEN_MODERATE,Moderate Scenario,t_cca67657e6ede7,Humanities & Spatial Design Center,Postdoctoral Fellow,3480.0,261.6,7.52,3218.4,0.145
+SCEN_MODERATE,Moderate Scenario,t_cb6effaed0bd54,Department of Biosciences & Genomics,Senior Research Scientist,3148.8,236.7,7.52,2912.1,0.132
+SCEN_MODERATE,Moderate Scenario,t_b511db628dc56d,Humanities & Spatial Design Center,Research Associate / Data Analyst,3010.0,226.3,7.52,2783.7,0.126
+SCEN_MODERATE,Moderate Scenario,t_3ea134ff42c505,Center for Physics & Advanced Materials,Graduate Research Assistant,2835.0,213.1,7.52,2621.9,0.118
+SCEN_MODERATE,Moderate Scenario,t_352478e28ef6b5,Center for Physics & Advanced Materials,Graduate Research Assistant,2730.0,205.2,7.52,2524.8,0.114
+SCEN_MODERATE,Moderate Scenario,t_37e040498c5be6,Center for Physics & Advanced Materials,Senior Research Scientist,2620.8,197.0,7.52,2423.8,0.109
+SCEN_MODERATE,Moderate Scenario,t_2a71f83d071514,Department of Biosciences & Genomics,Postdoctoral Fellow,1520.0,189.2,12.45,1330.8,0.105
+SCEN_MODERATE,Moderate Scenario,t_9118e92e80ace8,Center for Physics & Advanced Materials,Postdoctoral Fellow,2496.0,187.6,7.52,2308.4,0.104
+SCEN_MODERATE,Moderate Scenario,t_79806a2f4f6abe,Department of Biosciences & Genomics,Senior Research Scientist,2346.0,176.4,7.52,2169.6,0.098
+SCEN_MODERATE,Moderate Scenario,t_a49cc4f190ccd6,Department of Biosciences & Genomics,Graduate Research Assistant,2318.4,174.3,7.52,2144.1,0.097
+SCEN_MODERATE,Moderate Scenario,t_19444e22faaef3,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1729.6,164.2,9.5,1565.4,0.091
+SCEN_MODERATE,Moderate Scenario,t_dbe5675481fc02,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2171.2,163.2,7.52,2008.0,0.091
+SCEN_MODERATE,Moderate Scenario,t_df5041cb776d65,Humanities & Spatial Design Center,Research Associate / Data Analyst,2162.0,162.5,7.52,1999.5,0.09
+SCEN_MODERATE,Moderate Scenario,t_0ded642fea3411,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2100.0,157.9,7.52,1942.1,0.088
+SCEN_MODERATE,Moderate Scenario,t_8d853aff9710b6,Department of Biosciences & Genomics,Research Associate / Data Analyst,1848.0,155.2,8.4,1692.8,0.086
+SCEN_MODERATE,Moderate Scenario,t_7b794b91d3ef1d,Center for Physics & Advanced Materials,Research Associate / Data Analyst,2050.0,154.1,7.52,1895.9,0.086
+SCEN_MODERATE,Moderate Scenario,t_1eb7be0aa8d1fc,Humanities & Spatial Design Center,Postdoctoral Fellow,2000.0,150.4,7.52,1849.6,0.084
+SCEN_MODERATE,Moderate Scenario,t_b3e0abdcd5d6ff,Institute for Empirical Social Sciences,Graduate Research Assistant,1996.8,150.1,7.52,1846.7,0.083
+SCEN_MODERATE,Moderate Scenario,t_4cffb9b87c4cc4,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1752.0,145.1,8.28,1606.9,0.081
+SCEN_MODERATE,Moderate Scenario,t_7960136bec392c,Center for Physics & Advanced Materials,Postdoctoral Fellow,1875.0,141.0,7.52,1734.0,0.078
+SCEN_MODERATE,Moderate Scenario,t_5073c3e1902683,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1840.0,138.3,7.52,1701.7,0.077
+SCEN_MODERATE,Moderate Scenario,t_480794ba0591a2,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1324.8,137.8,10.4,1187.0,0.077
+SCEN_MODERATE,Moderate Scenario,t_9939bed40eeb36,Humanities & Spatial Design Center,Graduate Research Assistant,1824.0,137.1,7.52,1686.9,0.076
+SCEN_MODERATE,Moderate Scenario,t_ebd94006ba2682,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1375.0,128.0,9.31,1247.0,0.071
+SCEN_MODERATE,Moderate Scenario,t_a84922109b833a,Humanities & Spatial Design Center,Principal Investigator / Professor,1689.6,127.0,7.52,1562.6,0.071
+SCEN_MODERATE,Moderate Scenario,t_0efa54e1657c59,Center for Physics & Advanced Materials,Postdoctoral Fellow,1632.0,122.7,7.52,1509.3,0.068
+SCEN_MODERATE,Moderate Scenario,t_8fd2665a06395a,Department of Biosciences & Genomics,Postdoctoral Fellow,1619.2,121.7,7.52,1497.5,0.068
+SCEN_MODERATE,Moderate Scenario,t_4916ceaa4a2a82,Department of Biosciences & Genomics,Graduate Research Assistant,1444.8,121.4,8.4,1323.4,0.067
+SCEN_MODERATE,Moderate Scenario,t_c7afbef2d86da6,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1260.0,119.6,9.49,1140.4,0.066
+SCEN_MODERATE,Moderate Scenario,t_1658bd961bc319,Institute for Empirical Social Sciences,Graduate Research Assistant,1540.0,115.8,7.52,1424.2,0.064
+SCEN_MODERATE,Moderate Scenario,t_1d9be70ad83cdd,Department of Biosciences & Genomics,Postdoctoral Fellow,1478.4,111.1,7.52,1367.3,0.062
+SCEN_MODERATE,Moderate Scenario,t_db0d033bc7cd48,Department of Biosciences & Genomics,Senior Research Scientist,1320.0,110.9,8.4,1209.1,0.062
+SCEN_MODERATE,Moderate Scenario,t_09503227dd42ae,Center for Physics & Advanced Materials,Principal Investigator / Professor,1470.0,110.5,7.52,1359.5,0.061
+SCEN_MODERATE,Moderate Scenario,t_bbacec7036688b,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1470.0,110.5,7.52,1359.5,0.061
+SCEN_MODERATE,Moderate Scenario,t_1ed20d6ae355f7,Institute for Empirical Social Sciences,Graduate Research Assistant,1411.2,109.1,7.73,1302.1,0.061
+SCEN_MODERATE,Moderate Scenario,t_7205e83bb02852,Humanities & Spatial Design Center,Graduate Research Assistant,1440.0,108.3,7.52,1331.7,0.06
+SCEN_MODERATE,Moderate Scenario,t_ccc77993b8b121,Humanities & Spatial Design Center,Senior Research Scientist,1440.0,108.3,7.52,1331.7,0.06
+SCEN_MODERATE,Moderate Scenario,t_0584370a7581ee,Humanities & Spatial Design Center,Senior Research Scientist,1425.0,107.1,7.52,1317.9,0.059
+SCEN_MODERATE,Moderate Scenario,t_01c51862049a98,Humanities & Spatial Design Center,Research Associate / Data Analyst,1416.8,106.5,7.52,1310.3,0.059
+SCEN_MODERATE,Moderate Scenario,t_0b3bf743920d64,Institute for Empirical Social Sciences,Graduate Research Assistant,1398.4,105.1,7.52,1293.3,0.058
+SCEN_MODERATE,Moderate Scenario,t_3bda7be28d4d21,Institute for Empirical Social Sciences,Graduate Research Assistant,1357.0,102.0,7.52,1255.0,0.057
+SCEN_MODERATE,Moderate Scenario,t_4144fe01468d7e,Institute for Empirical Social Sciences,Research Associate / Data Analyst,883.2,100.8,11.41,782.4,0.056
+SCEN_MODERATE,Moderate Scenario,t_a350c36eee3040,Department of Biosciences & Genomics,Principal Investigator / Professor,1320.0,99.2,7.52,1220.8,0.055
+SCEN_MODERATE,Moderate Scenario,t_eb23201253fe6d,Department of Biosciences & Genomics,Senior Research Scientist,1305.6,98.2,7.52,1207.4,0.055
+SCEN_MODERATE,Moderate Scenario,t_7bb214f8275d7f,Institute for Empirical Social Sciences,Graduate Research Assistant,1250.0,94.0,7.52,1156.0,0.052
+SCEN_MODERATE,Moderate Scenario,t_af4e4effd56dc0,Institute for Empirical Social Sciences,Senior Research Scientist,1228.8,92.4,7.52,1136.4,0.051
+SCEN_MODERATE,Moderate Scenario,t_bb65ec0d848ec3,Department of Biosciences & Genomics,Research Associate / Data Analyst,1228.2,92.3,7.52,1135.9,0.051
+SCEN_MODERATE,Moderate Scenario,t_27957aa0f07644,Humanities & Spatial Design Center,Research Associate / Data Analyst,1160.0,87.2,7.52,1072.8,0.048
+SCEN_MODERATE,Moderate Scenario,t_46f43e9dd53dc0,Humanities & Spatial Design Center,Senior Research Scientist,816.0,87.1,10.68,728.9,0.048
+SCEN_MODERATE,Moderate Scenario,t_b8c2f81ab71c16,Center for Physics & Advanced Materials,Senior Research Scientist,1034.0,86.9,8.4,947.1,0.048
+SCEN_MODERATE,Moderate Scenario,t_33668484d4b58b,Department of Biosciences & Genomics,Senior Research Scientist,1144.0,86.0,7.52,1058.0,0.048
+SCEN_MODERATE,Moderate Scenario,t_af7ed2be3cb5b4,Department of Biosciences & Genomics,Senior Research Scientist,1020.0,85.7,8.4,934.3,0.048
+SCEN_MODERATE,Moderate Scenario,t_882db4819b7e72,Humanities & Spatial Design Center,Graduate Research Assistant,1108.8,83.4,7.52,1025.4,0.046
+SCEN_MODERATE,Moderate Scenario,t_04ee224d832f32,Center for Physics & Advanced Materials,Graduate Research Assistant,1036.8,77.9,7.52,958.9,0.043
+SCEN_MODERATE,Moderate Scenario,t_27e81ea20dcc2b,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1030.4,77.5,7.52,952.9,0.043
+SCEN_MODERATE,Moderate Scenario,t_6318de1a516493,Humanities & Spatial Design Center,Principal Investigator / Professor,1022.4,76.9,7.52,945.5,0.043
+SCEN_MODERATE,Moderate Scenario,t_d1ecee91b0c244,Center for Physics & Advanced Materials,Graduate Research Assistant,998.4,75.1,7.52,923.3,0.042
+SCEN_MODERATE,Moderate Scenario,t_0f37c5ef7aaf5e,Humanities & Spatial Design Center,Senior Research Scientist,968.0,72.8,7.52,895.2,0.04
+SCEN_MODERATE,Moderate Scenario,t_6af055c7799a50,Department of Biosciences & Genomics,Principal Investigator / Professor,968.0,72.8,7.52,895.2,0.04
+SCEN_MODERATE,Moderate Scenario,t_2e78aabf0cef46,Institute for Empirical Social Sciences,Postdoctoral Fellow,844.8,71.0,8.4,773.8,0.039
+SCEN_MODERATE,Moderate Scenario,t_ce6c1e7f152226,Humanities & Spatial Design Center,Research Associate / Data Analyst,924.0,69.5,7.52,854.5,0.039
+SCEN_MODERATE,Moderate Scenario,t_b489eef613a079,Institute for Empirical Social Sciences,Research Associate / Data Analyst,920.0,69.2,7.52,850.8,0.038
+SCEN_MODERATE,Moderate Scenario,t_09a0f6165cfa1a,Institute for Empirical Social Sciences,Graduate Research Assistant,901.6,67.8,7.52,833.8,0.038
+SCEN_MODERATE,Moderate Scenario,t_480d77713780c6,Humanities & Spatial Design Center,Principal Investigator / Professor,800.4,67.2,8.4,733.2,0.037
+SCEN_MODERATE,Moderate Scenario,t_2ee3606534c080,Department of Biosciences & Genomics,Postdoctoral Fellow,883.2,66.4,7.52,816.8,0.037
+SCEN_MODERATE,Moderate Scenario,t_3a189809f04165,Department of Biosciences & Genomics,Senior Research Scientist,874.0,65.7,7.52,808.3,0.037
+SCEN_MODERATE,Moderate Scenario,t_a55f68bb34bfd9,Institute for Empirical Social Sciences,Senior Research Scientist,809.6,60.9,7.52,748.7,0.034
+SCEN_MODERATE,Moderate Scenario,t_5af4d4a96f08fd,Institute for Empirical Social Sciences,Senior Research Scientist,600.0,60.7,10.12,539.3,0.034
+SCEN_MODERATE,Moderate Scenario,t_26e981e414accc,Humanities & Spatial Design Center,Principal Investigator / Professor,1555.2,60.2,3.87,1495.0,0.033
+SCEN_MODERATE,Moderate Scenario,t_bad95f39a37e1d,Humanities & Spatial Design Center,Postdoctoral Fellow,782.0,58.8,7.52,723.2,0.033
+SCEN_MODERATE,Moderate Scenario,t_51122d3edb9eee,Center for Physics & Advanced Materials,Principal Investigator / Professor,510.0,58.6,11.49,451.4,0.033
+SCEN_MODERATE,Moderate Scenario,t_15d12665849560,Institute for Empirical Social Sciences,Postdoctoral Fellow,695.2,58.4,8.4,636.8,0.032
+SCEN_MODERATE,Moderate Scenario,t_ac58c355abbf03,Department of Biosciences & Genomics,Graduate Research Assistant,730.4,58.2,7.97,672.2,0.032
+SCEN_MODERATE,Moderate Scenario,t_1dd7633f912cd3,Institute for Empirical Social Sciences,Postdoctoral Fellow,772.8,58.1,7.52,714.7,0.032
+SCEN_MODERATE,Moderate Scenario,t_fb98b94250a12c,Institute for Empirical Social Sciences,Senior Research Scientist,759.0,57.1,7.52,701.9,0.032
+SCEN_MODERATE,Moderate Scenario,t_438fbefc40ab48,Institute for Empirical Social Sciences,Research Associate / Data Analyst,748.8,56.3,7.52,692.5,0.031
+SCEN_MODERATE,Moderate Scenario,t_3b5a45226afc85,Institute for Empirical Social Sciences,Research Associate / Data Analyst,720.0,54.1,7.52,665.9,0.03
+SCEN_MODERATE,Moderate Scenario,t_2b13a39aa1b2d1,Center for Physics & Advanced Materials,Postdoctoral Fellow,710.4,53.4,7.52,657.0,0.03
+SCEN_MODERATE,Moderate Scenario,t_6d4d6a8b3c718f,Center for Physics & Advanced Materials,Principal Investigator / Professor,708.4,53.3,7.52,655.1,0.03
+SCEN_MODERATE,Moderate Scenario,t_5783ac16dbcc15,Department of Biosciences & Genomics,Principal Investigator / Professor,633.6,53.2,8.4,580.4,0.03
+SCEN_MODERATE,Moderate Scenario,t_923e9431d9371a,Department of Biosciences & Genomics,Principal Investigator / Professor,696.0,52.3,7.52,643.7,0.029
+SCEN_MODERATE,Moderate Scenario,t_ebf1b11ef387e1,Center for Physics & Advanced Materials,Graduate Research Assistant,699.2,52.2,7.47,647.0,0.029
+SCEN_MODERATE,Moderate Scenario,t_2dd72a2daa9162,Institute for Empirical Social Sciences,Senior Research Scientist,690.0,51.9,7.52,638.1,0.029
+SCEN_MODERATE,Moderate Scenario,t_0a58e9b6511ee3,Humanities & Spatial Design Center,Senior Research Scientist,690.0,51.9,7.52,638.1,0.029
+SCEN_MODERATE,Moderate Scenario,t_e7a89801aeaebf,Humanities & Spatial Design Center,Principal Investigator / Professor,651.2,49.0,7.52,602.2,0.027
+SCEN_MODERATE,Moderate Scenario,t_357ad418b14027,Institute for Empirical Social Sciences,Senior Research Scientist,633.6,47.6,7.52,586.0,0.026
+SCEN_MODERATE,Moderate Scenario,t_0ef8f59a69e352,Humanities & Spatial Design Center,Principal Investigator / Professor,633.6,47.6,7.52,586.0,0.026
+SCEN_MODERATE,Moderate Scenario,t_d2dd35e677fd0b,Department of Biosciences & Genomics,Research Associate / Data Analyst,633.6,47.6,7.52,586.0,0.026
+SCEN_MODERATE,Moderate Scenario,t_b3f0d18fb82ca0,Humanities & Spatial Design Center,Postdoctoral Fellow,621.0,46.7,7.52,574.3,0.026
+SCEN_MODERATE,Moderate Scenario,t_46e6413a59d94a,Humanities & Spatial Design Center,Research Associate / Data Analyst,734.4,45.6,6.21,688.8,0.025
+SCEN_MODERATE,Moderate Scenario,t_16ec549c49d572,Center for Physics & Advanced Materials,Postdoctoral Fellow,607.2,45.6,7.52,561.6,0.025
+SCEN_MODERATE,Moderate Scenario,t_204cf6f3c9a332,Institute for Empirical Social Sciences,Research Associate / Data Analyst,604.8,45.5,7.52,559.3,0.025
+SCEN_MODERATE,Moderate Scenario,t_faf389b34c7a60,Department of Biosciences & Genomics,Principal Investigator / Professor,600.0,45.1,7.52,554.9,0.025
+SCEN_MODERATE,Moderate Scenario,t_c2967b55b65fd2,Humanities & Spatial Design Center,Research Associate / Data Analyst,566.4,44.9,7.92,521.5,0.025
+SCEN_MODERATE,Moderate Scenario,t_cfd700344383e2,Humanities & Spatial Design Center,Principal Investigator / Professor,579.6,43.6,7.52,536.0,0.024
+SCEN_MODERATE,Moderate Scenario,t_e54f7ff5ce955f,Department of Biosciences & Genomics,Senior Research Scientist,571.2,42.9,7.52,528.3,0.024
+SCEN_MODERATE,Moderate Scenario,t_d5051ecd867128,Institute for Empirical Social Sciences,Senior Research Scientist,570.4,42.9,7.52,527.5,0.024
+SCEN_MODERATE,Moderate Scenario,t_bf8497afc3ef65,Humanities & Spatial Design Center,Graduate Research Assistant,496.8,41.7,8.4,455.1,0.023
+SCEN_MODERATE,Moderate Scenario,t_96051ef0cabc1f,Humanities & Spatial Design Center,Principal Investigator / Professor,545.6,41.0,7.52,504.6,0.023
+SCEN_MODERATE,Moderate Scenario,t_ffde9f3c533b35,Center for Physics & Advanced Materials,Principal Investigator / Professor,405.0,40.2,9.92,364.8,0.022
+SCEN_MODERATE,Moderate Scenario,t_c68c6a5099aeb9,Department of Biosciences & Genomics,Principal Investigator / Professor,475.2,39.9,8.4,435.3,0.022
+SCEN_MODERATE,Moderate Scenario,t_7b672920e13814,Humanities & Spatial Design Center,Graduate Research Assistant,375.0,39.1,10.44,335.9,0.022
+SCEN_MODERATE,Moderate Scenario,t_e8091fc08401fc,Center for Physics & Advanced Materials,Postdoctoral Fellow,450.0,37.8,8.4,412.2,0.021
+SCEN_MODERATE,Moderate Scenario,t_0f8d4eb3920f2a,Humanities & Spatial Design Center,Research Associate / Data Analyst,460.0,37.0,8.05,423.0,0.021
+SCEN_MODERATE,Moderate Scenario,t_d8ae66f45c0984,Institute for Empirical Social Sciences,Graduate Research Assistant,488.4,36.7,7.52,451.7,0.02
+SCEN_MODERATE,Moderate Scenario,t_6a10275a3e63fb,Center for Physics & Advanced Materials,Senior Research Scientist,475.2,35.7,7.52,439.5,0.02
+SCEN_MODERATE,Moderate Scenario,t_43e52d595311fd,Department of Biosciences & Genomics,Senior Research Scientist,377.2,35.5,9.4,341.7,0.02
+SCEN_MODERATE,Moderate Scenario,t_4123f659464038,Center for Physics & Advanced Materials,Research Associate / Data Analyst,469.2,35.3,7.52,433.9,0.02
+SCEN_MODERATE,Moderate Scenario,t_8f79561718b376,Department of Biosciences & Genomics,Graduate Research Assistant,326.4,35.0,10.72,291.4,0.019
+SCEN_MODERATE,Moderate Scenario,t_b36f0a482b72f9,Center for Physics & Advanced Materials,Senior Research Scientist,460.8,34.6,7.52,426.2,0.019
+SCEN_MODERATE,Moderate Scenario,t_33e3d155a01143,Center for Physics & Advanced Materials,Graduate Research Assistant,456.0,34.3,7.52,421.7,0.019
+SCEN_MODERATE,Moderate Scenario,t_1e91f77009b362,Institute for Empirical Social Sciences,Principal Investigator / Professor,445.0,33.5,7.52,411.5,0.019
+SCEN_MODERATE,Moderate Scenario,t_f37ed6d0d09bd6,Humanities & Spatial Design Center,Senior Research Scientist,450.0,32.6,7.25,417.4,0.018
+SCEN_MODERATE,Moderate Scenario,t_4a24cfb5fe38ef,Humanities & Spatial Design Center,Principal Investigator / Professor,386.4,32.5,8.4,353.9,0.018
+SCEN_MODERATE,Moderate Scenario,t_7408e6bdf14680,Humanities & Spatial Design Center,Senior Research Scientist,386.4,32.5,8.4,353.9,0.018
+SCEN_MODERATE,Moderate Scenario,t_b7206a4f8f3cc5,Center for Physics & Advanced Materials,Graduate Research Assistant,423.2,31.8,7.52,391.4,0.018
+SCEN_MODERATE,Moderate Scenario,t_d4cd65b21ff4f2,Center for Physics & Advanced Materials,Graduate Research Assistant,420.0,31.6,7.52,388.4,0.018
+SCEN_MODERATE,Moderate Scenario,t_0a41ebdbea0309,Institute for Empirical Social Sciences,Graduate Research Assistant,412.8,31.0,7.52,381.8,0.017
+SCEN_MODERATE,Moderate Scenario,t_52afa83ca9ebd6,Center for Physics & Advanced Materials,Principal Investigator / Professor,1716.0,30.6,1.78,1685.4,0.017
+SCEN_MODERATE,Moderate Scenario,t_66770f1a2d7dd8,Institute for Empirical Social Sciences,Postdoctoral Fellow,289.8,28.1,9.69,261.7,0.016
+SCEN_MODERATE,Moderate Scenario,t_c0e371fa225499,Institute for Empirical Social Sciences,Senior Research Scientist,370.0,27.8,7.52,342.2,0.015
+SCEN_MODERATE,Moderate Scenario,t_4d8f5243ab25b3,Humanities & Spatial Design Center,Principal Investigator / Professor,326.4,27.4,8.4,299.0,0.015
+SCEN_MODERATE,Moderate Scenario,t_99537ba50af22d,Department of Biosciences & Genomics,Senior Research Scientist,312.8,26.3,8.4,286.5,0.015
+SCEN_MODERATE,Moderate Scenario,t_acc1665545cbeb,Cross-Disciplinary Research Unit,Postdoctoral Fellow,349.6,26.3,7.52,323.3,0.015
+SCEN_MODERATE,Moderate Scenario,t_334eb19f19ed2f,Center for Physics & Advanced Materials,Principal Investigator / Professor,345.0,25.9,7.52,319.1,0.014
+SCEN_MODERATE,Moderate Scenario,t_98602eccbbe605,Humanities & Spatial Design Center,Principal Investigator / Professor,340.4,25.6,7.52,314.8,0.014
+SCEN_MODERATE,Moderate Scenario,t_d31bef7852bfc9,Humanities & Spatial Design Center,Graduate Research Assistant,303.6,24.2,7.97,279.4,0.013
+SCEN_MODERATE,Moderate Scenario,t_0fe56af53cc5bb,Humanities & Spatial Design Center,Graduate Research Assistant,315.0,23.7,7.52,291.3,0.013
+SCEN_MODERATE,Moderate Scenario,t_f08d40b75a8075,Institute for Empirical Social Sciences,Senior Research Scientist,280.0,23.5,8.4,256.5,0.013
+SCEN_MODERATE,Moderate Scenario,t_f91b9bd5e509f6,Institute for Empirical Social Sciences,Graduate Research Assistant,281.6,22.5,8.0,259.1,0.013
+SCEN_MODERATE,Moderate Scenario,t_265415efdde6f0,Center for Physics & Advanced Materials,Principal Investigator / Professor,290.4,21.8,7.52,268.6,0.012
+SCEN_MODERATE,Moderate Scenario,t_29a1a95327e535,Department of Biosciences & Genomics,Principal Investigator / Professor,285.2,21.4,7.52,263.8,0.012
+SCEN_MODERATE,Moderate Scenario,t_2cded7ad75faf9,Center for Physics & Advanced Materials,Research Associate / Data Analyst,285.0,21.4,7.52,263.6,0.012
+SCEN_MODERATE,Moderate Scenario,t_6747165bf646d2,Center for Physics & Advanced Materials,Senior Research Scientist,708.4,19.1,2.7,689.3,0.011
+SCEN_MODERATE,Moderate Scenario,t_93f0ef37af982d,Department of Biosciences & Genomics,Senior Research Scientist,805.0,18.4,2.29,786.6,0.01
+SCEN_MODERATE,Moderate Scenario,t_1c9ebd96dd9b21,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1227.6,18.0,1.46,1209.6,0.01
+SCEN_MODERATE,Moderate Scenario,t_3ab77b114802f8,Department of Biosciences & Genomics,Postdoctoral Fellow,1408.0,17.9,1.27,1390.1,0.01
+SCEN_MODERATE,Moderate Scenario,t_f92ce65e37921a,Department of Biosciences & Genomics,Senior Research Scientist,720.0,17.5,2.43,702.5,0.01
+SCEN_MODERATE,Moderate Scenario,t_3e7886e07be499,Department of Biosciences & Genomics,Principal Investigator / Professor,225.6,17.0,7.52,208.6,0.009
+SCEN_MODERATE,Moderate Scenario,t_3359aae5862100,Department of Biosciences & Genomics,Postdoctoral Fellow,950.4,14.9,1.57,935.5,0.008
+SCEN_MODERATE,Moderate Scenario,t_a090e78c68bc47,Department of Biosciences & Genomics,Graduate Research Assistant,193.2,14.5,7.52,178.7,0.008
+SCEN_MODERATE,Moderate Scenario,t_48c1c18e313891,Department of Biosciences & Genomics,Graduate Research Assistant,167.2,14.0,8.4,153.2,0.008
+SCEN_MODERATE,Moderate Scenario,t_c0daba5187d99f,Center for Physics & Advanced Materials,Research Associate / Data Analyst,262.2,12.8,4.89,249.4,0.007
+SCEN_MODERATE,Moderate Scenario,t_1c3df927b181ff,Center for Physics & Advanced Materials,Research Associate / Data Analyst,160.0,12.0,7.52,148.0,0.007
+SCEN_MODERATE,Moderate Scenario,t_782d9286614acf,Institute for Empirical Social Sciences,Principal Investigator / Professor,129.6,9.7,7.52,119.9,0.005
+SCEN_MODERATE,Moderate Scenario,t_796ed5c4442bd2,Department of Biosciences & Genomics,Research Associate / Data Analyst,123.2,9.3,7.52,113.9,0.005
+SCEN_MODERATE,Moderate Scenario,t_144047c49263e9,Center for Physics & Advanced Materials,Graduate Research Assistant,110.0,8.3,7.52,101.7,0.005
+SCEN_MODERATE,Moderate Scenario,t_853831ad152cc3,Center for Physics & Advanced Materials,Principal Investigator / Professor,1040.0,7.2,0.69,1032.8,0.004
+SCEN_MODERATE,Moderate Scenario,t_9e3bedf535a203,Department of Biosciences & Genomics,Principal Investigator / Professor,470.4,1.9,0.41,468.5,0.001
+SCEN_OPTIMISTIC,Optimistic Scenario,t_9d6bb1033ff9fe,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2745.6,740.7,26.98,2004.9,0.412
+SCEN_OPTIMISTIC,Optimistic Scenario,t_cca67657e6ede7,Humanities & Spatial Design Center,Postdoctoral Fellow,3480.0,595.7,17.12,2884.3,0.331
+SCEN_OPTIMISTIC,Optimistic Scenario,t_cb6effaed0bd54,Department of Biosciences & Genomics,Senior Research Scientist,3148.8,539.0,17.12,2609.8,0.299
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b511db628dc56d,Humanities & Spatial Design Center,Research Associate / Data Analyst,3010.0,515.2,17.12,2494.8,0.286
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3ea134ff42c505,Center for Physics & Advanced Materials,Graduate Research Assistant,2835.0,485.3,17.12,2349.7,0.27
+SCEN_OPTIMISTIC,Optimistic Scenario,t_352478e28ef6b5,Center for Physics & Advanced Materials,Graduate Research Assistant,2730.0,467.3,17.12,2262.7,0.26
+SCEN_OPTIMISTIC,Optimistic Scenario,t_37e040498c5be6,Center for Physics & Advanced Materials,Senior Research Scientist,2620.8,448.6,17.12,2172.2,0.249
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2a71f83d071514,Department of Biosciences & Genomics,Postdoctoral Fellow,1520.0,430.9,28.35,1089.1,0.239
+SCEN_OPTIMISTIC,Optimistic Scenario,t_9118e92e80ace8,Center for Physics & Advanced Materials,Postdoctoral Fellow,2496.0,427.2,17.12,2068.8,0.237
+SCEN_OPTIMISTIC,Optimistic Scenario,t_79806a2f4f6abe,Department of Biosciences & Genomics,Senior Research Scientist,2346.0,401.6,17.12,1944.4,0.223
+SCEN_OPTIMISTIC,Optimistic Scenario,t_a49cc4f190ccd6,Department of Biosciences & Genomics,Graduate Research Assistant,2318.4,396.8,17.12,1921.6,0.22
+SCEN_OPTIMISTIC,Optimistic Scenario,t_19444e22faaef3,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1729.6,373.9,21.62,1355.7,0.208
+SCEN_OPTIMISTIC,Optimistic Scenario,t_dbe5675481fc02,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2171.2,371.6,17.12,1799.6,0.206
+SCEN_OPTIMISTIC,Optimistic Scenario,t_df5041cb776d65,Humanities & Spatial Design Center,Research Associate / Data Analyst,2162.0,370.1,17.12,1791.9,0.206
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0ded642fea3411,Institute for Empirical Social Sciences,Research Associate / Data Analyst,2100.0,359.5,17.12,1740.5,0.2
+SCEN_OPTIMISTIC,Optimistic Scenario,t_8d853aff9710b6,Department of Biosciences & Genomics,Research Associate / Data Analyst,1848.0,353.4,19.12,1494.6,0.196
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7b794b91d3ef1d,Center for Physics & Advanced Materials,Research Associate / Data Analyst,2050.0,350.9,17.12,1699.1,0.195
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1eb7be0aa8d1fc,Humanities & Spatial Design Center,Postdoctoral Fellow,2000.0,342.3,17.12,1657.7,0.19
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b3e0abdcd5d6ff,Institute for Empirical Social Sciences,Graduate Research Assistant,1996.8,341.8,17.12,1655.0,0.19
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4cffb9b87c4cc4,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1752.0,330.4,18.86,1421.6,0.184
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7960136bec392c,Center for Physics & Advanced Materials,Postdoctoral Fellow,1875.0,320.9,17.12,1554.1,0.178
+SCEN_OPTIMISTIC,Optimistic Scenario,t_5073c3e1902683,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1840.0,315.0,17.12,1525.0,0.175
+SCEN_OPTIMISTIC,Optimistic Scenario,t_480794ba0591a2,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1324.8,313.8,23.69,1011.0,0.174
+SCEN_OPTIMISTIC,Optimistic Scenario,t_9939bed40eeb36,Humanities & Spatial Design Center,Graduate Research Assistant,1824.0,312.2,17.12,1511.8,0.173
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ebd94006ba2682,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1375.0,291.4,21.19,1083.6,0.162
+SCEN_OPTIMISTIC,Optimistic Scenario,t_a84922109b833a,Humanities & Spatial Design Center,Principal Investigator / Professor,1689.6,289.2,17.12,1400.4,0.161
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0efa54e1657c59,Center for Physics & Advanced Materials,Postdoctoral Fellow,1632.0,279.3,17.12,1352.7,0.155
+SCEN_OPTIMISTIC,Optimistic Scenario,t_8fd2665a06395a,Department of Biosciences & Genomics,Postdoctoral Fellow,1619.2,277.2,17.12,1342.0,0.154
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4916ceaa4a2a82,Department of Biosciences & Genomics,Graduate Research Assistant,1444.8,276.3,19.12,1168.5,0.153
+SCEN_OPTIMISTIC,Optimistic Scenario,t_c7afbef2d86da6,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1260.0,272.3,21.61,987.7,0.151
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1658bd961bc319,Institute for Empirical Social Sciences,Graduate Research Assistant,1540.0,263.6,17.12,1276.4,0.146
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1d9be70ad83cdd,Department of Biosciences & Genomics,Postdoctoral Fellow,1478.4,253.1,17.12,1225.3,0.141
+SCEN_OPTIMISTIC,Optimistic Scenario,t_db0d033bc7cd48,Department of Biosciences & Genomics,Senior Research Scientist,1320.0,252.5,19.12,1067.5,0.14
+SCEN_OPTIMISTIC,Optimistic Scenario,t_bbacec7036688b,Institute for Empirical Social Sciences,Research Associate / Data Analyst,1470.0,251.6,17.12,1218.4,0.14
+SCEN_OPTIMISTIC,Optimistic Scenario,t_09503227dd42ae,Center for Physics & Advanced Materials,Principal Investigator / Professor,1470.0,251.6,17.12,1218.4,0.14
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1ed20d6ae355f7,Institute for Empirical Social Sciences,Graduate Research Assistant,1411.2,248.4,17.6,1162.8,0.138
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ccc77993b8b121,Humanities & Spatial Design Center,Senior Research Scientist,1440.0,246.5,17.12,1193.5,0.137
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7205e83bb02852,Humanities & Spatial Design Center,Graduate Research Assistant,1440.0,246.5,17.12,1193.5,0.137
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0584370a7581ee,Humanities & Spatial Design Center,Senior Research Scientist,1425.0,243.9,17.12,1181.1,0.136
+SCEN_OPTIMISTIC,Optimistic Scenario,t_01c51862049a98,Humanities & Spatial Design Center,Research Associate / Data Analyst,1416.8,242.5,17.12,1174.3,0.135
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0b3bf743920d64,Institute for Empirical Social Sciences,Graduate Research Assistant,1398.4,239.4,17.12,1159.0,0.133
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3bda7be28d4d21,Institute for Empirical Social Sciences,Graduate Research Assistant,1357.0,232.3,17.12,1124.7,0.129
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4144fe01468d7e,Institute for Empirical Social Sciences,Research Associate / Data Analyst,883.2,229.5,25.98,653.7,0.128
+SCEN_OPTIMISTIC,Optimistic Scenario,t_a350c36eee3040,Department of Biosciences & Genomics,Principal Investigator / Professor,1320.0,225.9,17.12,1094.1,0.126
+SCEN_OPTIMISTIC,Optimistic Scenario,t_eb23201253fe6d,Department of Biosciences & Genomics,Senior Research Scientist,1305.6,223.5,17.12,1082.1,0.124
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7bb214f8275d7f,Institute for Empirical Social Sciences,Graduate Research Assistant,1250.0,214.0,17.12,1036.0,0.119
+SCEN_OPTIMISTIC,Optimistic Scenario,t_af4e4effd56dc0,Institute for Empirical Social Sciences,Senior Research Scientist,1228.8,210.3,17.12,1018.5,0.117
+SCEN_OPTIMISTIC,Optimistic Scenario,t_bb65ec0d848ec3,Department of Biosciences & Genomics,Research Associate / Data Analyst,1228.2,210.2,17.12,1018.0,0.117
+SCEN_OPTIMISTIC,Optimistic Scenario,t_27957aa0f07644,Humanities & Spatial Design Center,Research Associate / Data Analyst,1160.0,198.6,17.12,961.4,0.11
+SCEN_OPTIMISTIC,Optimistic Scenario,t_46f43e9dd53dc0,Humanities & Spatial Design Center,Senior Research Scientist,816.0,198.4,24.32,617.6,0.11
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b8c2f81ab71c16,Center for Physics & Advanced Materials,Senior Research Scientist,1034.0,197.8,19.12,836.2,0.11
+SCEN_OPTIMISTIC,Optimistic Scenario,t_33668484d4b58b,Department of Biosciences & Genomics,Senior Research Scientist,1144.0,195.8,17.12,948.2,0.109
+SCEN_OPTIMISTIC,Optimistic Scenario,t_af7ed2be3cb5b4,Department of Biosciences & Genomics,Senior Research Scientist,1020.0,195.1,19.12,824.9,0.108
+SCEN_OPTIMISTIC,Optimistic Scenario,t_882db4819b7e72,Humanities & Spatial Design Center,Graduate Research Assistant,1108.8,189.8,17.12,919.0,0.105
+SCEN_OPTIMISTIC,Optimistic Scenario,t_04ee224d832f32,Center for Physics & Advanced Materials,Graduate Research Assistant,1036.8,177.5,17.12,859.3,0.099
+SCEN_OPTIMISTIC,Optimistic Scenario,t_27e81ea20dcc2b,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1030.4,176.4,17.12,854.0,0.098
+SCEN_OPTIMISTIC,Optimistic Scenario,t_6318de1a516493,Humanities & Spatial Design Center,Principal Investigator / Professor,1022.4,175.0,17.12,847.4,0.097
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d1ecee91b0c244,Center for Physics & Advanced Materials,Graduate Research Assistant,998.4,170.9,17.12,827.5,0.095
+SCEN_OPTIMISTIC,Optimistic Scenario,t_6af055c7799a50,Department of Biosciences & Genomics,Principal Investigator / Professor,968.0,165.7,17.12,802.3,0.092
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0f37c5ef7aaf5e,Humanities & Spatial Design Center,Senior Research Scientist,968.0,165.7,17.12,802.3,0.092
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2e78aabf0cef46,Institute for Empirical Social Sciences,Postdoctoral Fellow,844.8,161.6,19.12,683.2,0.09
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ce6c1e7f152226,Humanities & Spatial Design Center,Research Associate / Data Analyst,924.0,158.2,17.12,765.8,0.088
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b489eef613a079,Institute for Empirical Social Sciences,Research Associate / Data Analyst,920.0,157.5,17.12,762.5,0.087
+SCEN_OPTIMISTIC,Optimistic Scenario,t_09a0f6165cfa1a,Institute for Empirical Social Sciences,Graduate Research Assistant,901.6,154.3,17.12,747.3,0.086
+SCEN_OPTIMISTIC,Optimistic Scenario,t_480d77713780c6,Humanities & Spatial Design Center,Principal Investigator / Professor,800.4,153.1,19.12,647.3,0.085
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2ee3606534c080,Department of Biosciences & Genomics,Postdoctoral Fellow,883.2,151.2,17.12,732.0,0.084
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3a189809f04165,Department of Biosciences & Genomics,Senior Research Scientist,874.0,149.6,17.12,724.4,0.083
+SCEN_OPTIMISTIC,Optimistic Scenario,t_a55f68bb34bfd9,Institute for Empirical Social Sciences,Senior Research Scientist,809.6,138.6,17.12,671.0,0.077
+SCEN_OPTIMISTIC,Optimistic Scenario,t_5af4d4a96f08fd,Institute for Empirical Social Sciences,Senior Research Scientist,600.0,138.2,23.04,461.8,0.077
+SCEN_OPTIMISTIC,Optimistic Scenario,t_26e981e414accc,Humanities & Spatial Design Center,Principal Investigator / Professor,1555.2,137.2,8.82,1418.0,0.076
+SCEN_OPTIMISTIC,Optimistic Scenario,t_bad95f39a37e1d,Humanities & Spatial Design Center,Postdoctoral Fellow,782.0,133.9,17.12,648.1,0.074
+SCEN_OPTIMISTIC,Optimistic Scenario,t_51122d3edb9eee,Center for Physics & Advanced Materials,Principal Investigator / Professor,510.0,133.4,26.16,376.6,0.074
+SCEN_OPTIMISTIC,Optimistic Scenario,t_15d12665849560,Institute for Empirical Social Sciences,Postdoctoral Fellow,695.2,133.0,19.12,562.2,0.074
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ac58c355abbf03,Department of Biosciences & Genomics,Graduate Research Assistant,730.4,132.6,18.15,597.8,0.074
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1dd7633f912cd3,Institute for Empirical Social Sciences,Postdoctoral Fellow,772.8,132.3,17.12,640.5,0.074
+SCEN_OPTIMISTIC,Optimistic Scenario,t_fb98b94250a12c,Institute for Empirical Social Sciences,Senior Research Scientist,759.0,129.9,17.12,629.1,0.072
+SCEN_OPTIMISTIC,Optimistic Scenario,t_438fbefc40ab48,Institute for Empirical Social Sciences,Research Associate / Data Analyst,748.8,128.2,17.12,620.6,0.071
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3b5a45226afc85,Institute for Empirical Social Sciences,Research Associate / Data Analyst,720.0,123.2,17.12,596.8,0.068
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2b13a39aa1b2d1,Center for Physics & Advanced Materials,Postdoctoral Fellow,710.4,121.6,17.12,588.8,0.068
+SCEN_OPTIMISTIC,Optimistic Scenario,t_6d4d6a8b3c718f,Center for Physics & Advanced Materials,Principal Investigator / Professor,708.4,121.3,17.12,587.1,0.067
+SCEN_OPTIMISTIC,Optimistic Scenario,t_5783ac16dbcc15,Department of Biosciences & Genomics,Principal Investigator / Professor,633.6,121.2,19.12,512.4,0.067
+SCEN_OPTIMISTIC,Optimistic Scenario,t_923e9431d9371a,Department of Biosciences & Genomics,Principal Investigator / Professor,696.0,119.1,17.12,576.9,0.066
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ebf1b11ef387e1,Center for Physics & Advanced Materials,Graduate Research Assistant,699.2,118.9,17.01,580.3,0.066
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0a58e9b6511ee3,Humanities & Spatial Design Center,Senior Research Scientist,690.0,118.1,17.12,571.9,0.066
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2dd72a2daa9162,Institute for Empirical Social Sciences,Senior Research Scientist,690.0,118.1,17.12,571.9,0.066
+SCEN_OPTIMISTIC,Optimistic Scenario,t_e7a89801aeaebf,Humanities & Spatial Design Center,Principal Investigator / Professor,651.2,111.5,17.12,539.7,0.062
+SCEN_OPTIMISTIC,Optimistic Scenario,t_357ad418b14027,Institute for Empirical Social Sciences,Senior Research Scientist,633.6,108.5,17.12,525.1,0.06
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0ef8f59a69e352,Humanities & Spatial Design Center,Principal Investigator / Professor,633.6,108.5,17.12,525.1,0.06
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d2dd35e677fd0b,Department of Biosciences & Genomics,Research Associate / Data Analyst,633.6,108.5,17.12,525.1,0.06
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b3f0d18fb82ca0,Humanities & Spatial Design Center,Postdoctoral Fellow,621.0,106.3,17.12,514.7,0.059
+SCEN_OPTIMISTIC,Optimistic Scenario,t_16ec549c49d572,Center for Physics & Advanced Materials,Postdoctoral Fellow,607.2,103.9,17.12,503.3,0.058
+SCEN_OPTIMISTIC,Optimistic Scenario,t_46e6413a59d94a,Humanities & Spatial Design Center,Research Associate / Data Analyst,734.4,103.8,14.13,630.6,0.058
+SCEN_OPTIMISTIC,Optimistic Scenario,t_204cf6f3c9a332,Institute for Empirical Social Sciences,Research Associate / Data Analyst,604.8,103.5,17.12,501.3,0.058
+SCEN_OPTIMISTIC,Optimistic Scenario,t_faf389b34c7a60,Department of Biosciences & Genomics,Principal Investigator / Professor,600.0,102.7,17.12,497.3,0.057
+SCEN_OPTIMISTIC,Optimistic Scenario,t_c2967b55b65fd2,Humanities & Spatial Design Center,Research Associate / Data Analyst,566.4,102.2,18.04,464.2,0.057
+SCEN_OPTIMISTIC,Optimistic Scenario,t_cfd700344383e2,Humanities & Spatial Design Center,Principal Investigator / Professor,579.6,99.2,17.12,480.4,0.055
+SCEN_OPTIMISTIC,Optimistic Scenario,t_e54f7ff5ce955f,Department of Biosciences & Genomics,Senior Research Scientist,571.2,97.8,17.12,473.4,0.054
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d5051ecd867128,Institute for Empirical Social Sciences,Senior Research Scientist,570.4,97.6,17.12,472.8,0.054
+SCEN_OPTIMISTIC,Optimistic Scenario,t_bf8497afc3ef65,Humanities & Spatial Design Center,Graduate Research Assistant,496.8,95.0,19.12,401.8,0.053
+SCEN_OPTIMISTIC,Optimistic Scenario,t_96051ef0cabc1f,Humanities & Spatial Design Center,Principal Investigator / Professor,545.6,93.4,17.12,452.2,0.052
+SCEN_OPTIMISTIC,Optimistic Scenario,t_ffde9f3c533b35,Center for Physics & Advanced Materials,Principal Investigator / Professor,405.0,91.5,22.59,313.5,0.051
+SCEN_OPTIMISTIC,Optimistic Scenario,t_c68c6a5099aeb9,Department of Biosciences & Genomics,Principal Investigator / Professor,475.2,90.9,19.12,384.3,0.051
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7b672920e13814,Humanities & Spatial Design Center,Graduate Research Assistant,375.0,89.1,23.76,285.9,0.049
+SCEN_OPTIMISTIC,Optimistic Scenario,t_e8091fc08401fc,Center for Physics & Advanced Materials,Postdoctoral Fellow,450.0,86.1,19.12,363.9,0.048
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0f8d4eb3920f2a,Humanities & Spatial Design Center,Research Associate / Data Analyst,460.0,84.3,18.32,375.7,0.047
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d8ae66f45c0984,Institute for Empirical Social Sciences,Graduate Research Assistant,488.4,83.6,17.12,404.8,0.046
+SCEN_OPTIMISTIC,Optimistic Scenario,t_6a10275a3e63fb,Center for Physics & Advanced Materials,Senior Research Scientist,475.2,81.3,17.12,393.9,0.045
+SCEN_OPTIMISTIC,Optimistic Scenario,t_43e52d595311fd,Department of Biosciences & Genomics,Senior Research Scientist,377.2,80.8,21.41,296.4,0.045
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4123f659464038,Center for Physics & Advanced Materials,Research Associate / Data Analyst,469.2,80.3,17.12,388.9,0.045
+SCEN_OPTIMISTIC,Optimistic Scenario,t_8f79561718b376,Department of Biosciences & Genomics,Graduate Research Assistant,326.4,79.7,24.41,246.7,0.044
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b36f0a482b72f9,Center for Physics & Advanced Materials,Senior Research Scientist,460.8,78.9,17.12,381.9,0.044
+SCEN_OPTIMISTIC,Optimistic Scenario,t_33e3d155a01143,Center for Physics & Advanced Materials,Graduate Research Assistant,456.0,78.1,17.12,377.9,0.043
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1e91f77009b362,Institute for Empirical Social Sciences,Principal Investigator / Professor,445.0,76.2,17.12,368.8,0.042
+SCEN_OPTIMISTIC,Optimistic Scenario,t_f37ed6d0d09bd6,Humanities & Spatial Design Center,Senior Research Scientist,450.0,74.3,16.51,375.7,0.041
+SCEN_OPTIMISTIC,Optimistic Scenario,t_7408e6bdf14680,Humanities & Spatial Design Center,Senior Research Scientist,386.4,73.9,19.12,312.5,0.041
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4a24cfb5fe38ef,Humanities & Spatial Design Center,Principal Investigator / Professor,386.4,73.9,19.12,312.5,0.041
+SCEN_OPTIMISTIC,Optimistic Scenario,t_b7206a4f8f3cc5,Center for Physics & Advanced Materials,Graduate Research Assistant,423.2,72.4,17.12,350.8,0.04
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d4cd65b21ff4f2,Center for Physics & Advanced Materials,Graduate Research Assistant,420.0,71.9,17.12,348.1,0.04
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0a41ebdbea0309,Institute for Empirical Social Sciences,Graduate Research Assistant,412.8,70.7,17.12,342.1,0.039
+SCEN_OPTIMISTIC,Optimistic Scenario,t_52afa83ca9ebd6,Center for Physics & Advanced Materials,Principal Investigator / Professor,1716.0,69.7,4.06,1646.3,0.039
+SCEN_OPTIMISTIC,Optimistic Scenario,t_66770f1a2d7dd8,Institute for Empirical Social Sciences,Postdoctoral Fellow,289.8,64.0,22.07,225.8,0.036
+SCEN_OPTIMISTIC,Optimistic Scenario,t_c0e371fa225499,Institute for Empirical Social Sciences,Senior Research Scientist,370.0,63.3,17.12,306.7,0.035
+SCEN_OPTIMISTIC,Optimistic Scenario,t_4d8f5243ab25b3,Humanities & Spatial Design Center,Principal Investigator / Professor,326.4,62.4,19.12,264.0,0.035
+SCEN_OPTIMISTIC,Optimistic Scenario,t_acc1665545cbeb,Cross-Disciplinary Research Unit,Postdoctoral Fellow,349.6,59.8,17.12,289.8,0.033
+SCEN_OPTIMISTIC,Optimistic Scenario,t_99537ba50af22d,Department of Biosciences & Genomics,Senior Research Scientist,312.8,59.8,19.12,253.0,0.033
+SCEN_OPTIMISTIC,Optimistic Scenario,t_334eb19f19ed2f,Center for Physics & Advanced Materials,Principal Investigator / Professor,345.0,59.1,17.12,285.9,0.033
+SCEN_OPTIMISTIC,Optimistic Scenario,t_98602eccbbe605,Humanities & Spatial Design Center,Principal Investigator / Professor,340.4,58.3,17.12,282.1,0.032
+SCEN_OPTIMISTIC,Optimistic Scenario,t_d31bef7852bfc9,Humanities & Spatial Design Center,Graduate Research Assistant,303.6,55.1,18.14,248.5,0.031
+SCEN_OPTIMISTIC,Optimistic Scenario,t_0fe56af53cc5bb,Humanities & Spatial Design Center,Graduate Research Assistant,315.0,53.9,17.12,261.1,0.03
+SCEN_OPTIMISTIC,Optimistic Scenario,t_f08d40b75a8075,Institute for Empirical Social Sciences,Senior Research Scientist,280.0,53.6,19.12,226.4,0.03
+SCEN_OPTIMISTIC,Optimistic Scenario,t_f91b9bd5e509f6,Institute for Empirical Social Sciences,Graduate Research Assistant,281.6,51.3,18.22,230.3,0.028
+SCEN_OPTIMISTIC,Optimistic Scenario,t_265415efdde6f0,Center for Physics & Advanced Materials,Principal Investigator / Professor,290.4,49.7,17.12,240.7,0.028
+SCEN_OPTIMISTIC,Optimistic Scenario,t_29a1a95327e535,Department of Biosciences & Genomics,Principal Investigator / Professor,285.2,48.8,17.12,236.4,0.027
+SCEN_OPTIMISTIC,Optimistic Scenario,t_2cded7ad75faf9,Center for Physics & Advanced Materials,Research Associate / Data Analyst,285.0,48.8,17.12,236.2,0.027
+SCEN_OPTIMISTIC,Optimistic Scenario,t_6747165bf646d2,Center for Physics & Advanced Materials,Senior Research Scientist,708.4,43.5,6.15,664.9,0.024
+SCEN_OPTIMISTIC,Optimistic Scenario,t_93f0ef37af982d,Department of Biosciences & Genomics,Senior Research Scientist,805.0,41.9,5.21,763.1,0.023
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1c9ebd96dd9b21,Center for Physics & Advanced Materials,Research Associate / Data Analyst,1227.6,40.9,3.33,1186.7,0.023
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3ab77b114802f8,Department of Biosciences & Genomics,Postdoctoral Fellow,1408.0,40.8,2.9,1367.2,0.023
+SCEN_OPTIMISTIC,Optimistic Scenario,t_f92ce65e37921a,Department of Biosciences & Genomics,Senior Research Scientist,720.0,39.8,5.52,680.2,0.022
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3e7886e07be499,Department of Biosciences & Genomics,Principal Investigator / Professor,225.6,38.6,17.12,187.0,0.021
+SCEN_OPTIMISTIC,Optimistic Scenario,t_3359aae5862100,Department of Biosciences & Genomics,Postdoctoral Fellow,950.4,34.0,3.57,916.4,0.019
+SCEN_OPTIMISTIC,Optimistic Scenario,t_a090e78c68bc47,Department of Biosciences & Genomics,Graduate Research Assistant,193.2,33.1,17.12,160.1,0.018
+SCEN_OPTIMISTIC,Optimistic Scenario,t_48c1c18e313891,Department of Biosciences & Genomics,Graduate Research Assistant,167.2,32.0,19.12,135.2,0.018
+SCEN_OPTIMISTIC,Optimistic Scenario,t_c0daba5187d99f,Center for Physics & Advanced Materials,Research Associate / Data Analyst,262.2,29.2,11.14,233.0,0.016
+SCEN_OPTIMISTIC,Optimistic Scenario,t_1c3df927b181ff,Center for Physics & Advanced Materials,Research Associate / Data Analyst,160.0,27.4,17.12,132.6,0.015
+SCEN_OPTIMISTIC,Optimistic Scenario,t_782d9286614acf,Institute for Empirical Social Sciences,Principal Investigator / Professor,129.6,22.2,17.12,107.4,0.012
+SCEN_OPTIMISTIC,Optimistic Scenario,t_796ed5c4442bd2,Department of Biosciences & Genomics,Research Associate / Data Analyst,123.2,21.1,17.12,102.1,0.012
+SCEN_OPTIMISTIC,Optimistic Scenario,t_144047c49263e9,Center for Physics & Advanced Materials,Graduate Research Assistant,110.0,18.8,17.12,91.2,0.01
+SCEN_OPTIMISTIC,Optimistic Scenario,t_853831ad152cc3,Center for Physics & Advanced Materials,Principal Investigator / Professor,1040.0,16.3,1.57,1023.7,0.009
+SCEN_OPTIMISTIC,Optimistic Scenario,t_9e3bedf535a203,Department of Biosciences & Genomics,Principal Investigator / Professor,470.4,4.4,0.93,466.0,0.002

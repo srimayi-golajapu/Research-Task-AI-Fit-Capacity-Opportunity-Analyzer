@@ -113,3 +113,30 @@ print(
         domain_comparison["_merge"] == "right_only"
     ][key_columns].head().to_string(index=False)
 )
+print("\nHOURS PER YEAR BY LEVEL")
+
+print(
+    task_hours_per_year_df.groupby("level")["hours_per_year"]
+    .agg(["count", "sum", "mean", "median"])
+)
+
+print("\nTASK TYPES")
+print(task_hours_per_year_df["task_type"].value_counts(dropna=False))
+
+print("\nSHARE NOT COUNTED ELSEWHERE BY LEVEL")
+print(
+    task_hours_per_year_df.groupby("level")[
+        "share_not_counted_elsewhere"
+    ].agg(["count", "mean", "min", "max"])
+)
+
+subfield_totals = (
+    task_hours_per_year_df
+    .groupby(["domain", "field", "subfield"])["hours_per_year"]
+    .sum()
+)
+
+print("\nSUBFIELD ANNUAL HOURS")
+print(subfield_totals.describe())
+
+print("\nMEDIAN ANNUAL HOURS:", subfield_totals.median())
